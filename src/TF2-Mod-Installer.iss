@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.1"
+#define MyAppVersion "1.1.1"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -196,6 +196,7 @@ Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"
 Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"
 Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"
 Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"
+Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"
 
 
 [Messages]
