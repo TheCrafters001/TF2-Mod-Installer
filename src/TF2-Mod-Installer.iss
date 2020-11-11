@@ -30,6 +30,8 @@ SolidCompression=yes
 WizardStyle=modern
 DisableWelcomePage=False
 InfoBeforeFile=.\Note.txt
+WizardImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizard.bmp
+WizardSmallImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizardSmall.bmp
 
 [Files]
 ;Huds
@@ -40,6 +42,18 @@ Source: "{tmp}\rayshud.zip"; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\rayshud.zip'),  'https://github.com/raysfire/rayshud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
 
 ;Animation Overhauls
+Source: "{tmp}\scout.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: scoutfar scoutclose; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\scout.zip'),  'https://files.gamebanana.com/skins/scoutoverhaulv3_34f0b.zip', 'TF2 Mods', 'get', 0, 0)
+
+Source: "{tmp}\demoman.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: demofar democlose; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\demoman.zip'),  'https://files.gamebanana.com/skins/demo_fp_anims.zip', 'TF2 Mods', 'get', 0, 0)
+
 Source: "{tmp}\sniper.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
@@ -60,18 +74,48 @@ Name: "custom"; Description: "Custom Mod Selection"; Flags: iscustom
 
 [Components]
 ;Huds
-Name: "rayshud"; Description: "rayshud"
+Name: "rayshud"; Description: "rayshud"; ExtraDiskSpaceRequired: 5270000
 ;Animation Overhauls
-Name: "sniper"; Description: "Sniper FP Animation Overhaul"
+Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
+Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691
+Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000
+Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000
+Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000
 
 [Run]
+;Huds
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -r -aoa"; Description: "rayshud"; StatusMsg: "Installing rayshud"; Components: rayshud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
+;Animations
 
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\demoman.zip"" -o""{tmp}\demo"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: demofar democlose
+;Far Viewmodels
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; Components: demofar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 70+ FOV.vpk"" ""{app}"""; Components: scoutfar
+;Close viewmodels
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; Components: democlose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 54 FOV.vpk"" ""{app}"""; Components: scoutclose
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\rayshud-master"
 Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"
+
+[Messages]
+BeveledLabel=Team Fortress 2 Mod Installer
+WelcomeLabel1=Thank you for downloading the [name]!
+WelcomeLabel2=[name] allows you to install TF2 Mods easily! All you need to do is select what mods you want%n%nPlease make sure TF2 is closed, as it may cause issues if you try to install mods while it is running.
+ClickNext=Click Next to continue, or Cancel to exit.
+SetupWindowTitle=%1
+UninstallAppFullTitle=Uninstall TF2 Mods
+UninstallAppTitle=Uninstall TF2 Mods
+UninstalledAll=Uninstalled all TF2 Mods from TF2 Mod Installer successfully
+UninstallStatusLabel=Please wait while all TF2 Mods installed using TF2 Mod Installer are being removed.
+ConfirmUninstall=Are you sure you want to uninstall all TF2 Mods that were installed using TF2 Mod Installer? This will not affect any of your mods that you didn't install using this tool.
 
 [Code]
 #define DwinsHs_Use_Predefined_Downloading_WizardPage

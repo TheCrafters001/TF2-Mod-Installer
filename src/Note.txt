@@ -3,7 +3,11 @@
 ==========
 I didn't make any of these mods. Please support the original creators of the mods. DO NOT INSTALL MULTIPLE HUDS AT THE SAME TIME!
 
+If you see that a viewmodel has both a Far and a Close varient, note that Far means 70+ FOV, and close means 54 FOV, and should not be installed at the same time.
+
 =============
 = Installer =
 =============
 This setup wizard is powered by Inno Setup and uses DwinsHs for downloading files.
+
+This tool is fan made and is not affiliated with Valve, Steam or Team Fortress 2.
