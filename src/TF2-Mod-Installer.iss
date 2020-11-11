@@ -40,6 +40,27 @@ Source: "{tmp}\rayshud.zip"; \
     Flags: external deleteafterinstall; \
     Components: rayshud; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\rayshud.zip'),  'https://github.com/raysfire/rayshud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\FlawHUD.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: flawhud; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\FlawHUD.zip'),  'https://github.com/CriticalFlaw/FlawHUD/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\ahud.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: ahud; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\ahud.zip'),  'https://github.com/n0kk/ahud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\toonhud.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: toonhud; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\toonhud.zip'),  'https://huds.tf/forum/xthreads_attach.php/189_1540069319_c009f7a4/852720773417a4e0068d441ec0c4a10e/toonhud__11-1.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\budhud.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: budhud; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\budhud.zip'),  'https://github.com/rbjaxter/budhud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
+
 ;Animation Overhauls
 ;Scout
 Source: "{tmp}\scout.zip"; \
@@ -91,6 +112,10 @@ Name: "custom"; Description: "Custom Mod Selection"; Flags: iscustom
 [Components]
 ;Huds
 Name: "rayshud"; Description: "rayshud"; ExtraDiskSpaceRequired: 5270000
+Name: "flawhud"; Description: "FlawHUD"; ExtraDiskSpaceRequired: 2770000
+Name: "ahud"; Description: "ahud"; ExtraDiskSpaceRequired: 521510
+Name: "toonhud"; Description: "ToonHUD"; ExtraDiskSpaceRequired: 915110
+Name: "budhud"; Description: "budhud"; ExtraDiskSpaceRequired: 13140000
 ;Animation Overhauls
 ;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
@@ -110,6 +135,10 @@ Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequi
 [Run]
 ;Huds
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -r -aoa"; Description: "rayshud"; StatusMsg: "Installing rayshud"; Components: rayshud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\ahud.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: ahud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\FlawHUD.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: flawhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\toonhud.zip"" -o""{app}\"" * -r -aoa"; Description: "ToonHUD"; StatusMsg: "Installing ToonHUD"; Components: toonhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Description: "ToonHUD"; StatusMsg: "Installing budhud"; Components: budhud
 ;Animations
 
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
@@ -134,6 +163,11 @@ Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Over
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\rayshud-master"
+Type: filesandordirs; Name: "{app}\flawhud-master"
+Type: filesandordirs; Name: "{app}\ahud-master"
+Type: filesandordirs; Name: "{app}\budhud-master"
+Type: filesandordirs; Name: "{app}\toonhud"
+
 Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"
 Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"
 Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"
@@ -159,6 +193,13 @@ ConfirmUninstall=Are you sure you want to uninstall all TF2 Mods that were insta
 SelectComponentsDesc=What mods would you like?
 SelectComponentsLabel2=Select the mods you would like to install. Remember, do not install both Far and Close viewmodels at the same time. Click Next when you are ready!
 WizardSelectComponents=Select Mods
+WizardUninstalling=Removing Mods...
+WizardInstalling=Innstalling Mods...
+InstallingLabel=Please wait will your selected mods are being installed.
+SelectDirDesc=Where do you want to install your mods?
+SelectDirLabel3=I will put the mods in the following folder.
+SelectDirBrowseLabel=Once you have selected the folder you want to install your mods to, click Next. (Default Recommended)
+ReadyLabel1=I have gathered all the info I needed! Ready to install your mods! :D
 
 [Code]
 #define DwinsHs_Use_Predefined_Downloading_WizardPage
