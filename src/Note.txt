@@ -1,0 +1,9 @@
+==========
+= Mods   =
+==========
+I didn't make any of these mods. Please support the original creators of the mods. DO NOT INSTALL MULTIPLE HUDS AT THE SAME TIME!
+
+=============
+= Installer =
+=============
+This setup wizard is powered by Inno Setup and uses DwinsHs for downloading files.
