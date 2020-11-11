@@ -40,33 +40,43 @@ Source: "{tmp}\rayshud.zip"; \
     Flags: external deleteafterinstall; \
     Components: rayshud; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\rayshud.zip'),  'https://github.com/raysfire/rayshud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
-
 ;Animation Overhauls
+;Scout
 Source: "{tmp}\scout.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: scoutfar scoutclose; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scout.zip'),  'https://files.gamebanana.com/skins/scoutoverhaulv3_34f0b.zip', 'TF2 Mods', 'get', 0, 0)
-
-Source: "{tmp}\engineer.zip"; \
+;Soldier
+Source: "{tmp}\soldier.rar"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
-    Components: engineerclose engineerfar; \
-    Check: DwinsHs_Check(ExpandConstant('{tmp}\engineer.zip'),  'https://files.gamebanana.com/skins/engineer-fp-ovhl-3-1.zip', 'TF2 Mods', 'get', 0, 0)
-
+    Components: demofar democlose; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\soldier.rar'),  'https://files.gamebanana.com/skins/soldieranimsremade-v-1-5-0.rar', 'TF2 Mods', 'get', 0, 0)
+;Demoman
 Source: "{tmp}\demoman.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: demofar democlose; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\demoman.zip'),  'https://files.gamebanana.com/skins/demo_fp_anims.zip', 'TF2 Mods', 'get', 0, 0)
-
+;Heavy
+Source: "{tmp}\heavy.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: heavyfar heavyclose; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\heavy.zip'),  'https://files.gamebanana.com/skins/heavyfpoverhaulv3-1-1_8a3e9.zip', 'TF2 Mods', 'get', 0, 0)
+;Engineer
+Source: "{tmp}\engineer.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: engineerclose engineerfar; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\engineer.zip'),  'https://files.gamebanana.com/skins/engineer-fp-ovhl-3-1.zip', 'TF2 Mods', 'get', 0, 0)
+;Sniper
 Source: "{tmp}\sniper.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: sniper; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\sniper.zip'),  'https://files.gamebanana.com/skins/sniperfpoverhaulv4.zip', 'TF2 Mods', 'get', 0, 0)
-
-
 ;7-Zip
 Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
@@ -82,12 +92,19 @@ Name: "custom"; Description: "Custom Mod Selection"; Flags: iscustom
 ;Huds
 Name: "rayshud"; Description: "rayshud"; ExtraDiskSpaceRequired: 5270000
 ;Animation Overhauls
+;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
 Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691
-Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449
-Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449
+;Demoman
 Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000
 Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000
+;Heavy
+Name: "heavyfar"; Description: "Heavy First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1773332
+Name: "heavyclose"; Description: "Heavy First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1773332
+;Engineer
+Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449
+Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449
+;Sniper
 Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000
 
 [Run]
@@ -97,15 +114,22 @@ Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -
 
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\demoman.zip"" -o""{tmp}\demo"" * -r -aoa"; Description: "demoman"; StatusMsg: "Extracting Demo FP Animations Remade"; Components: demofar democlose
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\heavy.zip"" -o""{tmp}\heavy"" * -r -aoa"; Description: "heavy"; StatusMsg: "Extracting Heavy First Person Animation Overhaul"; Components: heavyfar heavyclose
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\engineer.zip"" -o""{tmp}\engineer"" * -r -aoa"; Description: "engineer"; StatusMsg: "Extracting Paysus' Engineer First Person Animation Overhaul"; Components: engineerclose engineerfar
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
 ;Far Viewmodels
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Far)"; Components: demofar
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 70+ FOV.vpk"" ""{app}"""; StatusMsg: "Installing Scout FP Animation Overhaul (Far)"; Components: scoutfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Far)"; Components: demofar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\70+ FOV\Engineer FP Overhaul.vpk"" ""{app}"""; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Far)"; Components: engineerfar
 ;Close viewmodels
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: democlose
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 54 FOV.vpk"" ""{app}"""; StatusMsg: "Installing Scout FP Animation Overhaul (Close)"; Components: scoutclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: democlose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: engineerclose
 
 [UninstallDelete]
@@ -116,6 +140,10 @@ Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"
 Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"
 Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"
 Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"
+
 
 [Messages]
 BeveledLabel=Team Fortress 2 Mod Installer
