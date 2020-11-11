@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -34,6 +34,10 @@ WizardImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizard.bmp
 WizardSmallImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizardSmall.bmp
 
 [Files]
+;7-Zip
+Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
+Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
+Source: "Utilities\7Zip\7zxa.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 ;Huds
 Source: "{tmp}\rayshud.zip"; \
     DestDir: "{tmp}"; \
@@ -61,6 +65,13 @@ Source: "{tmp}\budhud.zip"; \
     Components: budhud; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\budhud.zip'),  'https://github.com/rbjaxter/budhud/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
 
+;Misc
+Source: "{tmp}\TinyDeskEngie.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: tinydeskengie; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\TinyDeskEngie.zip'),  'https://files.gamebanana.com/skins/tiny_desk_engineers.zip', 'TF2 Mods', 'get', 0, 0)
+
 ;Animation Overhauls
 ;Scout
 Source: "{tmp}\scout.zip"; \
@@ -68,12 +79,12 @@ Source: "{tmp}\scout.zip"; \
     Flags: external deleteafterinstall; \
     Components: scoutfar scoutclose; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scout.zip'),  'https://files.gamebanana.com/skins/scoutoverhaulv3_34f0b.zip', 'TF2 Mods', 'get', 0, 0)
-;Soldier
-Source: "{tmp}\soldier.rar"; \
+;Pyro
+Source: "{tmp}\pyro.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
-    Components: demofar democlose; \
-    Check: DwinsHs_Check(ExpandConstant('{tmp}\soldier.rar'),  'https://files.gamebanana.com/skins/soldieranimsremade-v-1-5-0.rar', 'TF2 Mods', 'get', 0, 0)
+    Components: pyro; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\pyro.zip'),  'https://files.gamebanana.com/skins/kyle_s_pyro_fps_overhaul_v1.zip', 'TF2 Mods', 'get', 0, 0)
 ;Demoman
 Source: "{tmp}\demoman.zip"; \
     DestDir: "{tmp}"; \
@@ -98,10 +109,7 @@ Source: "{tmp}\sniper.zip"; \
     Flags: external deleteafterinstall; \
     Components: sniper; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\sniper.zip'),  'https://files.gamebanana.com/skins/sniperfpoverhaulv4.zip', 'TF2 Mods', 'get', 0, 0)
-;7-Zip
-Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
-Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
-Source: "Utilities\7Zip\7zxa.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
+
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -116,10 +124,14 @@ Name: "flawhud"; Description: "FlawHUD"; ExtraDiskSpaceRequired: 2770000
 Name: "ahud"; Description: "ahud"; ExtraDiskSpaceRequired: 521510
 Name: "toonhud"; Description: "ToonHUD"; ExtraDiskSpaceRequired: 915110
 Name: "budhud"; Description: "budhud"; ExtraDiskSpaceRequired: 13140000
+;Misc
+Name: "tinydeskengie"; Description: "Tiny Desk Engineer Over Intel"; ExtraDiskSpaceRequired: 1251824
 ;Animation Overhauls
 ;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
 Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691
+;Pyro
+Name: "pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489
 ;Demoman
 Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000
 Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000
@@ -138,14 +150,18 @@ Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\ahud.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: ahud
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\FlawHUD.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: flawhud
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\toonhud.zip"" -o""{app}\"" * -r -aoa"; Description: "ToonHUD"; StatusMsg: "Installing ToonHUD"; Components: toonhud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Description: "ToonHUD"; StatusMsg: "Installing budhud"; Components: budhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Description: "budhud"; StatusMsg: "Installing budhud"; Components: budhud
+;Misc
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TinyDeskEngie.zip"" -o""{tmp}\tiny"" * -r -aoa"; Description: "TinyDeskEngie"; StatusMsg: "Extracting Tiny Desk Engineer Over Intel"; Components: tinydeskengie
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\tiny\Tiny Desk Engineers.vpk"" ""{app}"""; StatusMsg: "Installing Tiny Desk Engineer Over Intel"; Components: tinydeskengie
 ;Animations
-
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\pyro.zip"" -o""{tmp}\pyro"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Pyro FP Reanimated V.1"; Components: pyro
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\demoman.zip"" -o""{tmp}\demo"" * -r -aoa"; Description: "demoman"; StatusMsg: "Extracting Demo FP Animations Remade"; Components: demofar democlose
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\heavy.zip"" -o""{tmp}\heavy"" * -r -aoa"; Description: "heavy"; StatusMsg: "Extracting Heavy First Person Animation Overhaul"; Components: heavyfar heavyclose
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\engineer.zip"" -o""{tmp}\engineer"" * -r -aoa"; Description: "engineer"; StatusMsg: "Extracting Paysus' Engineer First Person Animation Overhaul"; Components: engineerclose engineerfar
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\pyro\Kyle's Pyro FPS Overhaul V.1\Kyle Pyro FP Overhaul V.1.vpk"" ""{app}"""; StatusMsg: "Installing Kyle's Pyro FPS Overhaul V.1"; Components: pyro
 ;Far Viewmodels
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 70+ FOV.vpk"" ""{app}"""; StatusMsg: "Installing Scout FP Animation Overhaul (Far)"; Components: scoutfar
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Far)"; Components: demofar
@@ -167,6 +183,9 @@ Type: filesandordirs; Name: "{app}\flawhud-master"
 Type: filesandordirs; Name: "{app}\ahud-master"
 Type: filesandordirs; Name: "{app}\budhud-master"
 Type: filesandordirs; Name: "{app}\toonhud"
+
+Type: filesandordirs; Name: "{app}\Tiny Desk Engineers.vpk"
+Type: filesandordirs; Name: "{app}\readme.txt"
 
 Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"
 Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"
