@@ -30,8 +30,8 @@ SolidCompression=yes
 WizardStyle=modern
 DisableWelcomePage=False
 InfoBeforeFile=.\Note.txt
-WizardImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizard.bmp
-WizardSmallImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizardSmall.bmp
+WizardImageFile=assets\ModInstallerWizard.bmp
+WizardSmallImageFile=assets\ModInstallerWizardSmall.bmp
 UninstallDisplayName=TF2 Mods from TF2 Mod Installer
 
 [Files]
