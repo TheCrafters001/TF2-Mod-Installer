@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.1.1"
+#define MyAppVersion "1.2"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -32,6 +32,7 @@ DisableWelcomePage=False
 InfoBeforeFile=.\Note.txt
 WizardImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizard.bmp
 WizardSmallImageFile=Z:\Images\Drawings\GameJolt\TF2\ModInstallerWizardSmall.bmp
+UninstallDisplayName=TF2 Mods from TF2 Mod Installer
 
 [Files]
 ;7-Zip
@@ -72,6 +73,12 @@ Source: "{tmp}\TinyDeskEngie.zip"; \
     Components: tinydeskengie; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\TinyDeskEngie.zip'),  'https://files.gamebanana.com/skins/tiny_desk_engineers.zip', 'TF2 Mods', 'get', 0, 0)
 
+Source: "{tmp}\RoboHeavy.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: roboheavy; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\RoboHeavy.zip'),  'https://files.gamebanana.com/skins/robot_heavy_sentry.zip', 'TF2 Mods', 'get', 0, 0)
+
 ;Animation Overhauls
 ;Scout
 Source: "{tmp}\scout.zip"; \
@@ -110,6 +117,13 @@ Source: "{tmp}\sniper.zip"; \
     Components: sniper; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\sniper.zip'),  'https://files.gamebanana.com/skins/sniperfpoverhaulv4.zip', 'TF2 Mods', 'get', 0, 0)
 
+;Model Replacer
+Source: "{tmp}\scoutLucario.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: scout_lucario; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\scoutLucario.zip'),  'https://files.gamebanana.com/skins/lucarioscout_2.zip', 'TF2 Mods', 'get', 0, 0)
+
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -126,6 +140,7 @@ Name: "toonhud"; Description: "ToonHUD"; ExtraDiskSpaceRequired: 915110
 Name: "budhud"; Description: "budhud"; ExtraDiskSpaceRequired: 13140000
 ;Misc
 Name: "tinydeskengie"; Description: "Tiny Desk Engineer Over Intel"; ExtraDiskSpaceRequired: 1251824
+Name: "roboheavy"; Description: "Robo-Heavy Sentry"; ExtraDiskSpaceRequired: 14152674
 ;Animation Overhauls
 ;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
@@ -143,6 +158,8 @@ Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overh
 Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449
 ;Sniper
 Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000
+;Model Replacer
+Name: "scout_lucario"; Description: "Scout Lucario"; ExtraDiskSpaceRequired: 1041989
 
 [Run]
 ;Huds
@@ -153,6 +170,7 @@ Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\toonhud.zip"" -o""{app}\"" * -
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Description: "budhud"; StatusMsg: "Installing budhud"; Components: budhud
 ;Misc
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TinyDeskEngie.zip"" -o""{tmp}\tiny"" * -r -aoa"; Description: "TinyDeskEngie"; StatusMsg: "Extracting Tiny Desk Engineer Over Intel"; Components: tinydeskengie
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\RoboHeavy.zip"" -o""{app}\"" * -r -aoa"; Description: "RoboHeavy"; StatusMsg: "Installing Robo-Heavy Sentry"; Components: roboheavy
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\tiny\Tiny Desk Engineers.vpk"" ""{app}"""; StatusMsg: "Installing Tiny Desk Engineer Over Intel"; Components: tinydeskengie
 ;Animations
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
@@ -176,28 +194,33 @@ Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation 
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: engineerclose
+;Model Replacer
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scoutLucario.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "ScoutLucario"; StatusMsg: "Extracting Scout Lucario"; Components: scout_lucario
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\LucarioScout.vpk"" ""{app}"""; StatusMsg: "Installing Scout Lucario"; Components: scout_lucario
+
+
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{app}\rayshud-master"
-Type: filesandordirs; Name: "{app}\flawhud-master"
-Type: filesandordirs; Name: "{app}\ahud-master"
-Type: filesandordirs; Name: "{app}\budhud-master"
-Type: filesandordirs; Name: "{app}\toonhud"
-
-Type: filesandordirs; Name: "{app}\Tiny Desk Engineers.vpk"
-Type: filesandordirs; Name: "{app}\readme.txt"
-
-Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"
-Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"
-Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"
-Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"
-Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"
-Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"
-Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"
-
+Type: filesandordirs; Name: "{app}\rayshud-master"; Components: rayshud
+Type: filesandordirs; Name: "{app}\flawhud-master"; Components: flawhud
+Type: filesandordirs; Name: "{app}\ahud-master"; Components: ahud
+Type: filesandordirs; Name: "{app}\budhud-master"; Components: budhud
+Type: filesandordirs; Name: "{app}\toonhud"; Components: toonhud
+Type: filesandordirs; Name: "{app}\Tiny Desk Engineers.vpk"; Components: tinydeskengie
+Type: filesandordirs; Name: "{app}\readme.txt"; Components: sniper
+Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"; Components: sniper
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"; Components: demofar
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"; Components: democlose
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"; Components: scoutfar
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"; Components: scoutclose
+Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"; Components: engineerfar engineerclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"; Components: heavyfar heavyclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"; Components: heavyfar heavyclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"; Components: heavyfar heavyclose
+Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"; Components: pyro
+Type: filesandordirs; Name: "{app}\Robot Heavy Sentry"; Components: roboheavy
+Type: filesandordirs; Name: "{app}\Robot Heavy Sentry.vpk"; Components: roboheavy
+Type: filesandordirs; Name: "{app}\LucarioScout.vpk"; Components: scout_lucario
 
 [Messages]
 BeveledLabel=Team Fortress 2 Mod Installer

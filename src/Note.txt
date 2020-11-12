@@ -5,7 +5,7 @@ I didn't make any of these mods. Please support the original creators of the mod
 
 If you see that a viewmodel has both a Far and a Close varient, note that Far means 70+ FOV, and close means 54 FOV, and should not be installed at the same time.
 
-The following viewmodels cannot be installed because I either cannot extract them or cannot find them: Pyro, Medic, Spy, Soldier
+The following viewmodels cannot be installed because I either cannot extract them or cannot find them: Medic, Spy, Soldier
 
 =============
 = Installer =
