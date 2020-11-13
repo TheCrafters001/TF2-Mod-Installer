@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.3"
+#define MyAppVersion "1.4"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -144,6 +144,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Types]
 Name: "custom"; Description: "Custom Mod Selection"; Flags: iscustom
+Name: "viewmodel_far"; Description: "Install all available viewmodels (70+ FOV)"
+Name: "viewmodel_close"; Description: "Install all available viewmodels (54 FOV)"
 
 [Components]
 ;Huds
@@ -158,25 +160,25 @@ Name: "roboheavy"; Description: "Robo-Heavy Sentry"; ExtraDiskSpaceRequired: 141
 Name: "valvenew"; Description: "Valve ""Open your mind"" intro"; ExtraDiskSpaceRequired: 11298648
 ;Animation Overhauls
 ;Scout
-Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
-Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691
+Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_far
+Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_close
 ;Pyro
-Name: "pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489
+Name: "pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489; Types: viewmodel_far viewmodel_close
 ;Demoman
-Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000
-Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000
+Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_far
+Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_close
 ;Heavy
-Name: "heavyfar"; Description: "Heavy First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1773332
+Name: "heavyfar"; Description: "Heavy First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1773332; Types: viewmodel_far
 Name: "heavyclose"; Description: "Heavy First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1773332
 ;Engineer
-Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449
-Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449
+Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_far
+Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_close
 ;Sniper
-Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000
+Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000; Types: viewmodel_far viewmodel_close
 ;Model Replacer
 Name: "scout_lucario"; Description: "Scout Lucario"; ExtraDiskSpaceRequired: 1041989
 ;Sound Changes
-name: "spyward"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
+Name: "spyward"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
 
 [Run]
 ;Backup Current MyCustomStuff
@@ -269,6 +271,12 @@ SelectDirDesc=Where do you want to install your mods?
 SelectDirLabel3=I will put the mods in the following folder.
 SelectDirBrowseLabel=Once you have selected the folder you want to install your mods to, click Next. (Default Recommended)
 ReadyLabel1=I have gathered all the info I needed! Ready to install your mods! :D
+StatusExtractFiles=Copying files...
+StatusUninstalling=Removing TF2 Mods installed using TF2 Mod Installer...
+ShutdownBlockReasonUninstallingApp=Removing TF2 Mods installed using TF2 Mod Installer...
+FinishedLabelNoIcons=The TF2 Mods you have selected have been installed!
+FinishedLabel=The TF2 Mods you have selected have been installed!
+FinishedHeadingLabel=Done installing Mods!
 
 [Code]
 #define DwinsHs_Use_Predefined_Downloading_WizardPage
