@@ -270,9 +270,6 @@ SelectDirLabel3=I will put the mods in the following folder.
 SelectDirBrowseLabel=Once you have selected the folder you want to install your mods to, click Next. (Default Recommended)
 ReadyLabel1=I have gathered all the info I needed! Ready to install your mods! :D
 
-[UninstallRun]
-Filename: "{cmd}"; Parameters: "/c xcopy /E /I ""{app}\my_custom_stuff_backup"" ""{app}\my_custom_stuff"""; Flags: runhidden; StatusMsg: "Restoring my_custom_stuff folder..."; Components: spyward
-
 [Code]
 #define DwinsHs_Use_Predefined_Downloading_WizardPage
 #define DwinsHs_Auto_Continue
