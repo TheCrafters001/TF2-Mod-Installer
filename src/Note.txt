@@ -7,6 +7,8 @@ If you see that a viewmodel has both a Far and a Close varient, note that Far me
 
 The following viewmodels cannot be installed because I either cannot extract them or cannot find them: Medic, Spy, Soldier
 
+The "my_custom_stuff" will be backed up when installing, but will not be restored when uninstalling.
+
 =============
 = Installer =
 =============

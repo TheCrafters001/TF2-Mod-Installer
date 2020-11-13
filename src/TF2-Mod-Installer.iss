@@ -2,9 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.2"
+#define MyAppVersion "1.3"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
+
+#define MediaPath "{autopf}\Steam\steamapps\common\Team Fortress 2\tf\media"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -72,6 +74,11 @@ Source: "{tmp}\TinyDeskEngie.zip"; \
     Flags: external deleteafterinstall; \
     Components: tinydeskengie; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\TinyDeskEngie.zip'),  'https://files.gamebanana.com/skins/tiny_desk_engineers.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\valveNew.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: valvenew; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\valveNew.zip'),  'https://files.gamebanana.com/guis/open_your_mind_2.zip', 'TF2 Mods', 'get', 0, 0)
 
 Source: "{tmp}\RoboHeavy.zip"; \
     DestDir: "{tmp}"; \
@@ -124,6 +131,13 @@ Source: "{tmp}\scoutLucario.zip"; \
     Components: scout_lucario; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scoutLucario.zip'),  'https://files.gamebanana.com/skins/lucarioscout_2.zip', 'TF2 Mods', 'get', 0, 0)
 
+;Sound Changes
+Source: "{tmp}\spyward.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: scout_lucario; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\spyward.zip'),  'https://files.gamebanana.com/sounds/spyward_v4.zip', 'TF2 Mods', 'get', 0, 0)
+
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -141,6 +155,7 @@ Name: "budhud"; Description: "budhud"; ExtraDiskSpaceRequired: 13140000
 ;Misc
 Name: "tinydeskengie"; Description: "Tiny Desk Engineer Over Intel"; ExtraDiskSpaceRequired: 1251824
 Name: "roboheavy"; Description: "Robo-Heavy Sentry"; ExtraDiskSpaceRequired: 14152674
+Name: "valvenew"; Description: "Valve ""Open your mind"" intro"; ExtraDiskSpaceRequired: 11298648
 ;Animation Overhauls
 ;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691
@@ -160,45 +175,53 @@ Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Ove
 Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000
 ;Model Replacer
 Name: "scout_lucario"; Description: "Scout Lucario"; ExtraDiskSpaceRequired: 1041989
+;Sound Changes
+name: "spyward"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
 
 [Run]
+;Backup Current MyCustomStuff
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{app}\my_custom_stuff"" ""{app}\my_custom_stuff_backup"""; Flags: runhidden; StatusMsg: "Backing up my_custom_stuff folder..."; Components: spyward
 ;Huds
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -r -aoa"; Description: "rayshud"; StatusMsg: "Installing rayshud"; Components: rayshud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\ahud.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: ahud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\FlawHUD.zip"" -o""{app}\"" * -r -aoa"; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: flawhud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\toonhud.zip"" -o""{app}\"" * -r -aoa"; Description: "ToonHUD"; StatusMsg: "Installing ToonHUD"; Components: toonhud
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Description: "budhud"; StatusMsg: "Installing budhud"; Components: budhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "rayshud"; StatusMsg: "Installing rayshud"; Components: rayshud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\ahud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: ahud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\FlawHUD.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: flawhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\toonhud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "ToonHUD"; StatusMsg: "Installing ToonHUD"; Components: toonhud
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\budhud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "budhud"; StatusMsg: "Installing budhud"; Components: budhud
 ;Misc
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TinyDeskEngie.zip"" -o""{tmp}\tiny"" * -r -aoa"; Description: "TinyDeskEngie"; StatusMsg: "Extracting Tiny Desk Engineer Over Intel"; Components: tinydeskengie
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\RoboHeavy.zip"" -o""{app}\"" * -r -aoa"; Description: "RoboHeavy"; StatusMsg: "Installing Robo-Heavy Sentry"; Components: roboheavy
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\tiny\Tiny Desk Engineers.vpk"" ""{app}"""; StatusMsg: "Installing Tiny Desk Engineer Over Intel"; Components: tinydeskengie
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TinyDeskEngie.zip"" -o""{tmp}\tiny"" * -r -aoa"; Flags: runhidden; Description: "TinyDeskEngie"; StatusMsg: "Extracting Tiny Desk Engineer Over Intel"; Components: tinydeskengie
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\RoboHeavy.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "RoboHeavy"; StatusMsg: "Installing Robo-Heavy Sentry"; Components: roboheavy
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\tiny\Tiny Desk Engineers.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Tiny Desk Engineer Over Intel"; Components: tinydeskengie
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\valveNew.zip"" -o""{tmp}\valve"" * -r -aoa"; Flags: runhidden; Description: "ValveNew"; StatusMsg: "Extracting Valve ""Open your mind"" intro"; Components: valvenew
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\valve\tf\media\valve.bik"" ""{#MediaPath}"""; Flags: runhidden; StatusMsg: "Installing Valve ""Open your mind"" intro"; Components: valvenew
 ;Animations
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\pyro.zip"" -o""{tmp}\pyro"" * -r -aoa"; Description: "scout"; StatusMsg: "Extracting Pyro FP Reanimated V.1"; Components: pyro
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\demoman.zip"" -o""{tmp}\demo"" * -r -aoa"; Description: "demoman"; StatusMsg: "Extracting Demo FP Animations Remade"; Components: demofar democlose
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\heavy.zip"" -o""{tmp}\heavy"" * -r -aoa"; Description: "heavy"; StatusMsg: "Extracting Heavy First Person Animation Overhaul"; Components: heavyfar heavyclose
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\engineer.zip"" -o""{tmp}\engineer"" * -r -aoa"; Description: "engineer"; StatusMsg: "Extracting Paysus' Engineer First Person Animation Overhaul"; Components: engineerclose engineerfar
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\pyro\Kyle's Pyro FPS Overhaul V.1\Kyle Pyro FP Overhaul V.1.vpk"" ""{app}"""; StatusMsg: "Installing Kyle's Pyro FPS Overhaul V.1"; Components: pyro
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout.zip"" -o""{tmp}\scout"" * -r -aoa"; Flags: runhidden; Description: "scout"; StatusMsg: "Extracting Scout FP Animation Overhaul"; Components: scoutfar scoutclose
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\pyro.zip"" -o""{tmp}\pyro"" * -r -aoa"; Flags: runhidden; Description: "scout"; StatusMsg: "Extracting Pyro FP Reanimated V.1"; Components: pyro
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\demoman.zip"" -o""{tmp}\demo"" * -r -aoa"; Flags: runhidden; Description: "demoman"; StatusMsg: "Extracting Demo FP Animations Remade"; Components: demofar democlose
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\heavy.zip"" -o""{tmp}\heavy"" * -r -aoa"; Flags: runhidden; Description: "heavy"; StatusMsg: "Extracting Heavy First Person Animation Overhaul"; Components: heavyfar heavyclose
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\engineer.zip"" -o""{tmp}\engineer"" * -r -aoa"; Flags: runhidden; Description: "engineer"; StatusMsg: "Extracting Paysus' Engineer First Person Animation Overhaul"; Components: engineerclose engineerfar
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sniper.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "sniper"; StatusMsg: "Installing Sniper FP Animation Overhaul"; Components: sniper
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\pyro\Kyle's Pyro FPS Overhaul V.1\Kyle Pyro FP Overhaul V.1.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Kyle's Pyro FPS Overhaul V.1"; Components: pyro
 ;Far Viewmodels
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 70+ FOV.vpk"" ""{app}"""; StatusMsg: "Installing Scout FP Animation Overhaul (Far)"; Components: scoutfar
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Far)"; Components: demofar
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\70+ FOV\Engineer FP Overhaul.vpk"" ""{app}"""; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Far)"; Components: engineerfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 70+ FOV.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Scout FP Animation Overhaul (Far)"; Components: scoutfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Far.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Demo FP Animations Remade (Far)"; Components: demofar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Far)"; Components: heavyfar
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\70+ FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Far)"; Components: engineerfar
 ;Close viewmodels
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 54 FOV.vpk"" ""{app}"""; StatusMsg: "Installing Scout FP Animation Overhaul (Close)"; Components: scoutclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: democlose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: engineerclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 54 FOV.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Scout FP Animation Overhaul (Close)"; Components: scoutclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: democlose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: engineerclose
 ;Model Replacer
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scoutLucario.zip"" -o""{tmp}\scout"" * -r -aoa"; Description: "ScoutLucario"; StatusMsg: "Extracting Scout Lucario"; Components: scout_lucario
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\LucarioScout.vpk"" ""{app}"""; StatusMsg: "Installing Scout Lucario"; Components: scout_lucario
-
-
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scoutLucario.zip"" -o""{tmp}\scout"" * -r -aoa"; Flags: runhidden; Description: "ScoutLucario"; StatusMsg: "Extracting Scout Lucario"; Components: scout_lucario
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\LucarioScout.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Scout Lucario"; Components: scout_lucario
+;Sound Changes
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\spyward.zip"" -o""{tmp}\spy"" * -r -aoa"; Flags: runhidden; Description: "Spyward"; StatusMsg: "Extracting Squidward As The Spy (SpyWard)"; Components: spyward
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\spy\SpyWard V4.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Squidward As The Spy (SpyWard)"; Components: spyward
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\spy\SpyWard V4\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Squidward As The Spy (SpyWard)"; Components: spyward
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\rayshud-master"; Components: rayshud
@@ -221,6 +244,9 @@ Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"; Components: p
 Type: filesandordirs; Name: "{app}\Robot Heavy Sentry"; Components: roboheavy
 Type: filesandordirs; Name: "{app}\Robot Heavy Sentry.vpk"; Components: roboheavy
 Type: filesandordirs; Name: "{app}\LucarioScout.vpk"; Components: scout_lucario
+Type: filesandordirs; Name: "{app}\SpyWard V4.vpk"; Components: spyward
+Type: filesandordirs; Name: "{app}\my_custom_stuff"; Components: spyward
+Type: filesandordirs; Name: "{#MediaPath}\valve.bik"; Components: valvenew
 
 [Messages]
 BeveledLabel=Team Fortress 2 Mod Installer
@@ -243,6 +269,9 @@ SelectDirDesc=Where do you want to install your mods?
 SelectDirLabel3=I will put the mods in the following folder.
 SelectDirBrowseLabel=Once you have selected the folder you want to install your mods to, click Next. (Default Recommended)
 ReadyLabel1=I have gathered all the info I needed! Ready to install your mods! :D
+
+[UninstallRun]
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I ""{app}\my_custom_stuff_backup"" ""{app}\my_custom_stuff"""; Flags: runhidden; StatusMsg: "Restoring my_custom_stuff folder..."; Components: spyward
 
 [Code]
 #define DwinsHs_Use_Predefined_Downloading_WizardPage
