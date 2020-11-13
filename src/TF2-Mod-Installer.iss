@@ -93,6 +93,11 @@ Source: "{tmp}\scout.zip"; \
     Flags: external deleteafterinstall; \
     Components: scoutfar scoutclose; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scout.zip'),  'https://files.gamebanana.com/skins/scoutoverhaulv3_34f0b.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\scout_alien.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: scoutalien; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\scout_alien.zip'),  'https://files.gamebanana.com/skins/scout_alien_hands_8d0e5.zip', 'TF2 Mods', 'get', 0, 0)
 ;Pyro
 Source: "{tmp}\pyro.zip"; \
     DestDir: "{tmp}"; \
@@ -137,6 +142,16 @@ Source: "{tmp}\spyward.zip"; \
     Flags: external deleteafterinstall; \
     Components: scout_lucario; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\spyward.zip'),  'https://files.gamebanana.com/sounds/spyward_v4.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\sirenfix.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: siren; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\sirenfix.zip'),  'https://files.gamebanana.com/sounds/sirenfix.zip', 'TF2 Mods', 'get', 0, 0)
+Source: "{tmp}\snatcher.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: snatcher; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\snatcher.zip'),  'https://files.gamebanana.com/sounds/snatcherannouncer_aefc7.zip', 'TF2 Mods', 'get', 0, 0)
 
 
 [Languages]
@@ -162,6 +177,7 @@ Name: "valvenew"; Description: "Valve ""Open your mind"" intro"; ExtraDiskSpaceR
 ;Scout
 Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_far
 Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_close
+Name: "scoutalien"; Description: "Scout Alien hands viewmodel"; ExtraDiskSpaceRequired: 3563169
 ;Pyro
 Name: "pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489; Types: viewmodel_far viewmodel_close
 ;Demoman
@@ -179,6 +195,9 @@ Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequi
 Name: "scout_lucario"; Description: "Scout Lucario"; ExtraDiskSpaceRequired: 1041989
 ;Sound Changes
 Name: "spyward"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
+Name: "siren"; Description: "Team Fortress 2 Siren mp3"; ExtraDiskSpaceRequired: 731682
+Name: "snatcher"; Description: "Snatcher the Announcer"; ExtraDiskSpaceRequired: 34669115
+
 
 [Run]
 ;Backup Current MyCustomStuff
@@ -218,12 +237,21 @@ Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation 
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: heavyclose
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: engineerclose
 ;Model Replacer
+;Lucario Scout
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout_alien.zip"" -o""{app}"" * -r -aoa"; Flags: runhidden; Description: "scoutalien"; StatusMsg: "Installing Scout Alien hands viewmodel"; Components: scoutalien
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scoutLucario.zip"" -o""{tmp}\scout"" * -r -aoa"; Flags: runhidden; Description: "ScoutLucario"; StatusMsg: "Extracting Scout Lucario"; Components: scout_lucario
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\LucarioScout.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Scout Lucario"; Components: scout_lucario
 ;Sound Changes
+;Spyward
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\spyward.zip"" -o""{tmp}\spy"" * -r -aoa"; Flags: runhidden; Description: "Spyward"; StatusMsg: "Extracting Squidward As The Spy (SpyWard)"; Components: spyward
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\spy\SpyWard V4.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Squidward As The Spy (SpyWard)"; Components: spyward
 Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\spy\SpyWard V4\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Squidward As The Spy (SpyWard)"; Components: spyward
+;SirenFix
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\sirenfix.zip"" -o""{tmp}\"" * -r -aoa"; Flags: runhidden; Description: "sirenfix"; StatusMsg: "Extracting Team Fortress 2 Siren mp3"; Components: siren
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\sirenfix\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Team Fortress 2 Siren mp3"; Components: siren
+;Snatcher
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\snatcher.zip"" -o""{tmp}\"" * -r -aoa"; Flags: runhidden; Description: "Snatcher"; StatusMsg: "Extracting Snatcher the Announcer"; Components: snatcher
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\SnatcherAnnouncer\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Snatcher the Announcer"; Components: snatcher
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\rayshud-master"; Components: rayshud
@@ -247,8 +275,11 @@ Type: filesandordirs; Name: "{app}\Robot Heavy Sentry"; Components: roboheavy
 Type: filesandordirs; Name: "{app}\Robot Heavy Sentry.vpk"; Components: roboheavy
 Type: filesandordirs; Name: "{app}\LucarioScout.vpk"; Components: scout_lucario
 Type: filesandordirs; Name: "{app}\SpyWard V4.vpk"; Components: spyward
-Type: filesandordirs; Name: "{app}\my_custom_stuff"; Components: spyward
 Type: filesandordirs; Name: "{#MediaPath}\valve.bik"; Components: valvenew
+Type: filesandordirs; Name: "{app}\scout_alien_hands_000.vpk"; Components: scoutalien
+Type: filesandordirs; Name: "{app}\scout_alien_hands_dir.vpk"; Components: scoutalien
+
+Type: filesandordirs; Name: "{app}\my_custom_stuff"; Components: spyward siren snatcher
 
 [Messages]
 BeveledLabel=Team Fortress 2 Mod Installer
