@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TF2 Mod Installer", "TF2 Mod Installer\TF2 Mod Installer.vbproj", "{07174FE6-DD55-4644-832D-D713BD8CD01D}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TF2 Mod Installer", "TF2 Mod Installer\TF2 Mod Installer.vbproj", "{BCDBBFEF-7232-4616-8E88-DEA46AF68E09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{07174FE6-DD55-4644-832D-D713BD8CD01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07174FE6-DD55-4644-832D-D713BD8CD01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07174FE6-DD55-4644-832D-D713BD8CD01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07174FE6-DD55-4644-832D-D713BD8CD01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDBBFEF-7232-4616-8E88-DEA46AF68E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDBBFEF-7232-4616-8E88-DEA46AF68E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDBBFEF-7232-4616-8E88-DEA46AF68E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDBBFEF-7232-4616-8E88-DEA46AF68E09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {68FD9EDA-B86F-43ED-8836-E70A0D3F45BF}
+		SolutionGuid = {51DE65C3-6B12-4FDB-97F8-AD8637B94AA3}
 	EndGlobalSection
 EndGlobal
