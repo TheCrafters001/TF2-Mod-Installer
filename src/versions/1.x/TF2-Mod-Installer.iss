@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.4"
+#define MyAppVersion "1.5"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -42,6 +42,11 @@ Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deletea
 Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7zxa.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 ;Huds
+Source: "{tmp}\TFPlus.zip"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: tfplus; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\TFPlus.zip'),  'https://github.com/SnowshoeIceboot/tf2hudplus/archive/master.zip', 'TF2 Mods', 'get', 0, 0)
 Source: "{tmp}\rayshud.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
@@ -164,6 +169,7 @@ Name: "viewmodel_close"; Description: "Install all available viewmodels (54 FOV)
 
 [Components]
 ;Huds
+Name: "tfplus"; Description: "TF2 Hud Plus"; ExtraDiskSpaceRequired: 358920
 Name: "rayshud"; Description: "rayshud"; ExtraDiskSpaceRequired: 5270000
 Name: "flawhud"; Description: "FlawHUD"; ExtraDiskSpaceRequired: 2770000
 Name: "ahud"; Description: "ahud"; ExtraDiskSpaceRequired: 521510
@@ -203,6 +209,8 @@ Name: "snatcher"; Description: "Snatcher the Announcer"; ExtraDiskSpaceRequired:
 ;Backup Current MyCustomStuff
 Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{app}\my_custom_stuff"" ""{app}\my_custom_stuff_backup"""; Flags: runhidden; StatusMsg: "Backing up my_custom_stuff folder..."; Components: spyward
 ;Huds
+
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TFPlus.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "TF2 Hud Plus"; StatusMsg: "Installing TF2 Hud Plus"; Components: tfplus
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\rayshud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "rayshud"; StatusMsg: "Installing rayshud"; Components: rayshud
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\ahud.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: ahud
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\FlawHUD.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "FlawHUD"; StatusMsg: "Installing FlawHUD"; Components: flawhud
@@ -254,6 +262,7 @@ Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\snatcher.zip"" -o""{tmp}\"" * 
 Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\SnatcherAnnouncer\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Snatcher the Announcer"; Components: snatcher
 
 [UninstallDelete]
+Type: filesandordirs; Name: "{app}\tf2hudplus-master"; Components: tfplus
 Type: filesandordirs; Name: "{app}\rayshud-master"; Components: rayshud
 Type: filesandordirs; Name: "{app}\flawhud-master"; Components: flawhud
 Type: filesandordirs; Name: "{app}\ahud-master"; Components: ahud
