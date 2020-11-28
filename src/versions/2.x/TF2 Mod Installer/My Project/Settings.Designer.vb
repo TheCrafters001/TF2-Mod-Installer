@@ -113,6 +113,30 @@ Namespace My
                 Me("SteamFolder") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property tf2InstallPath() As String
+            Get
+                Return CType(Me("tf2InstallPath"),String)
+            End Get
+            Set
+                Me("tf2InstallPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PersonalName() As String
+            Get
+                Return CType(Me("PersonalName"),String)
+            End Get
+            Set
+                Me("PersonalName") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
