@@ -1,0 +1,12 @@
+version: 2.0.{build}
+image: Previous Visual Studio 2019
+configuration:
+- Debug
+- Release
+platform: Any CPU
+clone_folder: C:\TheCrafters001\Build\TF2-Mod-Installer\src\bin
+before_build:
+- ps: nuget restore 'C:\TheCrafters001\Build\TF2-Mod-Installer\src\bin\src\versions\2.x\TF2 Mod Installer.sln'
+build:
+  project: src\versions\2.x\TF2 Mod Installer.sln
+  verbosity: minimal
