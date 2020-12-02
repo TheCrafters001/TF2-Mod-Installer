@@ -10,11 +10,3 @@ before_build:
 build:
   project: src\versions\2.x\TF2 Mod Installer.sln
   verbosity: minimal
-deploy:
-- provider: GitHub
-  tag: v$(appveyor_build_version)
-  release: v$(appveyor_build_version)
-  auth_token:
-    secure: Da1vU7llzLm5JDUh7d+CmqZP3Bcy8WrelfYG5GxLRV1TRFLY1mKeoCN79E3kFUvA
-  prerelease: true
-  force_update: false
