@@ -98,6 +98,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="scripts\appReset.vb" />
+    <Compile Include="scripts\backupMenu.vb" />
+    <Compile Include="scripts\errorHandler.vb" />
+    <Compile Include="scripts\installHandler.vb" />
+    <Compile Include="scripts\ModMenu.vb" />
+    <Compile Include="scripts\modSelecter.vb" />
+    <Compile Include="scripts\settingsMenu.vb" />
     <Compile Include="scripts\setup.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +136,8 @@
     <Content Include="assets\ModInstaller_Icon.png" />
     <Content Include="assets\TF2Community_Logo_Trasnparent.png" />
     <Content Include="assets\TF2_Icon.png" />
+    <None Include="Resources\siren2.wav" />
+    <None Include="Resources\siren.wav" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomCommands\" />
