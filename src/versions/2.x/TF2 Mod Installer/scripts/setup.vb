@@ -131,6 +131,9 @@ Public Class setup
             Console.WriteLine("")
             Console.Write("Enter your preferred name: ")
             preferredName = Console.ReadLine()
+            If preferredName = "" Then
+                preferredName = "User"
+            End If
             Console.WriteLine("Okay, I will refer to you as: " + preferredName + "! If you made a mistake, you can change this later.")
             My.Settings.PersonalName = preferredName
             My.Settings.IsFirstTime = False

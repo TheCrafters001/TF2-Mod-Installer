@@ -52,11 +52,11 @@ Module Main
 
 
         If choice = 1 Then
-
+            modSelecter.ModMenu(False)
         ElseIf choice = 2 Then
-
+            modSelecter.ModMenu(True)
         ElseIf choice = 3 Then
-
+            backupMenu.backupMenu()
         ElseIf choice = 4 Then
             settingsMenu.settings()
         ElseIf choice = 5 Then

@@ -102,7 +102,6 @@
     <Compile Include="scripts\backupMenu.vb" />
     <Compile Include="scripts\errorHandler.vb" />
     <Compile Include="scripts\installHandler.vb" />
-    <Compile Include="scripts\ModMenu.vb" />
     <Compile Include="scripts\modSelecter.vb" />
     <Compile Include="scripts\settingsMenu.vb" />
     <Compile Include="scripts\setup.vb" />
@@ -141,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomCommands\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
