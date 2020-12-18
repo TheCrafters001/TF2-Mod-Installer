@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mods Installer"
-#define MyAppVersion "1.5"
+#define MyAppVersion "1.6"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -84,12 +84,12 @@ Source: "{tmp}\valveNew.zip"; \
     Flags: external deleteafterinstall; \
     Components: valvenew; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\valveNew.zip'),  'https://files.gamebanana.com/guis/open_your_mind_2.zip', 'TF2 Mods', 'get', 0, 0)
-
 Source: "{tmp}\RoboHeavy.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: roboheavy; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\RoboHeavy.zip'),  'https://files.gamebanana.com/skins/robot_heavy_sentry.zip', 'TF2 Mods', 'get', 0, 0)
+Source: ".\TF2-Classic_Installer.exe"; Flags: deleteafterinstall; Components: tf2classic; DestDir: {tmp};
 
 ;Animation Overhauls
 ;Scout
@@ -140,7 +140,6 @@ Source: "{tmp}\scoutLucario.zip"; \
     Flags: external deleteafterinstall; \
     Components: scout_lucario; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scoutLucario.zip'),  'https://files.gamebanana.com/skins/lucarioscout_2.zip', 'TF2 Mods', 'get', 0, 0)
-
 ;Sound Changes
 Source: "{tmp}\spyward.zip"; \
     DestDir: "{tmp}"; \
@@ -158,7 +157,6 @@ Source: "{tmp}\snatcher.zip"; \
     Components: snatcher; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\snatcher.zip'),  'https://files.gamebanana.com/sounds/snatcherannouncer_aefc7.zip', 'TF2 Mods', 'get', 0, 0)
 
-
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
@@ -169,45 +167,45 @@ Name: "viewmodel_close"; Description: "Install all available viewmodels (54 FOV)
 
 [Components]
 ;Huds
-Name: "tfplus"; Description: "TF2 Hud Plus"; ExtraDiskSpaceRequired: 358920
+Name: "TFPlus"; Description: "TF2 Hud Plus"; ExtraDiskSpaceRequired: 358920
 Name: "rayshud"; Description: "rayshud"; ExtraDiskSpaceRequired: 5270000
-Name: "flawhud"; Description: "FlawHUD"; ExtraDiskSpaceRequired: 2770000
+Name: "FlawHUD"; Description: "FlawHUD"; ExtraDiskSpaceRequired: 2770000
 Name: "ahud"; Description: "ahud"; ExtraDiskSpaceRequired: 521510
-Name: "toonhud"; Description: "ToonHUD"; ExtraDiskSpaceRequired: 915110
+Name: "ToonHUD"; Description: "ToonHUD"; ExtraDiskSpaceRequired: 915110
 Name: "budhud"; Description: "budhud"; ExtraDiskSpaceRequired: 13140000
 ;Misc
-Name: "tinydeskengie"; Description: "Tiny Desk Engineer Over Intel"; ExtraDiskSpaceRequired: 1251824
-Name: "roboheavy"; Description: "Robo-Heavy Sentry"; ExtraDiskSpaceRequired: 14152674
-Name: "valvenew"; Description: "Valve ""Open your mind"" intro"; ExtraDiskSpaceRequired: 11298648
+Name: "TinyDeskEngie"; Description: "Tiny Desk Engineer Over Intel"; ExtraDiskSpaceRequired: 1251824
+Name: "RoboHeavy"; Description: "Robo-Heavy Sentry"; ExtraDiskSpaceRequired: 14152674
+Name: "ValveNew"; Description: "Valve ""Open your mind"" intro"; ExtraDiskSpaceRequired: 11298648
+Name: "TF2Classic"; Description: "Team Fortress 2 Classic"; ExtraDiskSpaceRequired: 3700000000;
 ;Animation Overhauls
 ;Scout
-Name: "scoutfar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_far
-Name: "scoutclose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_close
-Name: "scoutalien"; Description: "Scout Alien hands viewmodel"; ExtraDiskSpaceRequired: 3563169
+Name: "ScoutFar"; Description: "Scout FP Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_far
+Name: "ScoutClose"; Description: "Scout FP Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1047691; Types: viewmodel_close
+Name: "ScoutAlien"; Description: "Scout Alien hands viewmodel"; ExtraDiskSpaceRequired: 3563169
 ;Pyro
-Name: "pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489; Types: viewmodel_far viewmodel_close
+Name: "Pyro"; Description: "Pyro FP Reanimated V.1"; ExtraDiskSpaceRequired: 657489; Types: viewmodel_far viewmodel_close
 ;Demoman
-Name: "demofar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_far
-Name: "democlose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_close
+Name: "DemoFar"; Description: "Demo FP Animations Remade (Far)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_far
+Name: "DemoClose"; Description: "Demo FP Animations Remade (Close)"; ExtraDiskSpaceRequired: 1450000; Types: viewmodel_close
 ;Heavy
-Name: "heavyfar"; Description: "Heavy First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1773332; Types: viewmodel_far
-Name: "heavyclose"; Description: "Heavy First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1773332
+Name: "HeavyFar"; Description: "Heavy First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 1773332; Types: viewmodel_far
+Name: "HeavyClose"; Description: "Heavy First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 1773332
 ;Engineer
-Name: "engineerfar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_far
-Name: "engineerclose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_close
+Name: "EngineerFar"; Description: "Paysus' Engineer First Person Animation Overhaul (Far)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_far
+Name: "EngineerClose"; Description: "Paysus' Engineer First Person Animation Overhaul (Close)"; ExtraDiskSpaceRequired: 2055449; Types: viewmodel_close
 ;Sniper
-Name: "sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000; Types: viewmodel_far viewmodel_close
+Name: "Sniper"; Description: "Sniper FP Animation Overhaul"; ExtraDiskSpaceRequired: 1200000; Types: viewmodel_far viewmodel_close
 ;Model Replacer
 Name: "scout_lucario"; Description: "Scout Lucario"; ExtraDiskSpaceRequired: 1041989
 ;Sound Changes
-Name: "spyward"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
-Name: "siren"; Description: "Team Fortress 2 Siren mp3"; ExtraDiskSpaceRequired: 731682
-Name: "snatcher"; Description: "Snatcher the Announcer"; ExtraDiskSpaceRequired: 34669115
-
+Name: "SpyWard"; Description: "Squidward As The Spy (SpyWard)"; ExtraDiskSpaceRequired: 23063690
+Name: "Siren"; Description: "Team Fortress 2 Siren mp3"; ExtraDiskSpaceRequired: 731682
+Name: "Snatcher"; Description: "Snatcher the Announcer"; ExtraDiskSpaceRequired: 34669115
 
 [Run]
 ;Backup Current MyCustomStuff
-Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{app}\my_custom_stuff"" ""{app}\my_custom_stuff_backup"""; Flags: runhidden; StatusMsg: "Backing up my_custom_stuff folder..."; Components: spyward
+Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{app}\my_custom_stuff"" ""{app}\my_custom_stuff_backup"""; Flags: runhidden; StatusMsg: "Backing up my_custom_stuff folder..."; Components: spyward siren snatcher
 ;Huds
 
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\TFPlus.zip"" -o""{app}\"" * -r -aoa"; Flags: runhidden; Description: "TF2 Hud Plus"; StatusMsg: "Installing TF2 Hud Plus"; Components: tfplus
@@ -260,6 +258,8 @@ Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\sirenfix\sound"" ""{ap
 ;Snatcher
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\snatcher.zip"" -o""{tmp}\"" * -r -aoa"; Flags: runhidden; Description: "Snatcher"; StatusMsg: "Extracting Snatcher the Announcer"; Components: snatcher
 Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\SnatcherAnnouncer\sound"" ""{app}\my_custom_stuff\sound"""; Flags: runhidden; StatusMsg: "Installing Snatcher the Announcer"; Components: snatcher
+;tf2classic
+Filename: "{tmp}\TF2-Classic_Installer.exe"; Parameters: "/SILENT /TYPE=""full"""; Flags: runascurrentuser waituntilterminated; Description: "Waiting for TF2 Classic Installer..."; Components: TF2Classic
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\tf2hudplus-master"; Components: tfplus
