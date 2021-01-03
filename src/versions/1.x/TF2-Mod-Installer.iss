@@ -101,7 +101,7 @@ Source: "{tmp}\scout.zip"; \
 Source: "{tmp}\scout_alien.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
-    Components: scoutalien ModelReplace/ScoutAlien; \
+    Components: ModelReplace/ScoutAlien; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\scout_alien.zip'),  'https://files.gamebanana.com/skins/scout_alien_hands_8d0e5.zip', 'TF2 Mods', 'get', 0, 0)
 ;Pyro
 Source: "{tmp}\pyro.zip"; \
@@ -235,11 +235,11 @@ Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\70+ FOV\Heavy FP Animation
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\70+ FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Far)"; Components: AnimOver/Far/engineerfar
 ;Close viewmodels
 Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\scout\ScoutOverhaulV3\Scout FP Overhaul - 54 FOV.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Scout FP Animation Overhaul (Close)"; Components: AnimOver/Close/scoutclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: AnimOver/Closedemoclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Closeheavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Closeheavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Closeheavyclose
-Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: AnimOver/Closeengineerclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\demo\Demo FP Anims - Close.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Demo FP Animations Remade (Close)"; Components: AnimOver/Close/democlose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Close/heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Close/heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\heavy\54 FOV\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Heavy First Person Animation Overhaul (Close)"; Components: AnimOver/Close/heavyclose
+Filename: "{cmd}"; Parameters: "/c copy ""{tmp}\engineer\54 FOV\Engineer FP Overhaul.vpk"" ""{app}"""; Flags: runhidden; StatusMsg: "Installing Paysus' Engineer First Person Animation Overhaul (Close)"; Components: AnimOver/Close/engineerclose
 ;Model Replacer
 ;Lucario Scout
 Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\scout_alien.zip"" -o""{app}"" * -r -aoa"; Flags: runhidden; Description: "scoutalien"; StatusMsg: "Installing Scout Alien hands viewmodel"; Components: ModelReplace/scoutalien
@@ -257,33 +257,34 @@ Filename: "{cmd}"; Parameters: "/c xcopy /E /I /Y ""{tmp}\SnatcherAnnouncer\soun
 Filename: "{tmp}\TF2-Classic_Installer.exe"; Parameters: "/SILENT /TYPE=""full"""; Flags: runascurrentuser waituntilterminated; Description: "Waiting for TF2 Classic Installer..."; Components: MiscMods/LargeMods/TF2Classic
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{app}\tf2hudplus-master"; Components: tfplus
-Type: filesandordirs; Name: "{app}\rayshud-master"; Components: rayshud
-Type: filesandordirs; Name: "{app}\flawhud-master"; Components: flawhud
-Type: filesandordirs; Name: "{app}\ahud-master"; Components: ahud
-Type: filesandordirs; Name: "{app}\budhud-master"; Components: budhud
-Type: filesandordirs; Name: "{app}\toonhud"; Components: toonhud
-Type: filesandordirs; Name: "{app}\Tiny Desk Engineers.vpk"; Components: tinydeskengie
-Type: filesandordirs; Name: "{app}\readme.txt"; Components: sniper
-Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"; Components: sniper
-Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"; Components: demofar
-Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"; Components: democlose
-Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"; Components: scoutfar
-Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"; Components: scoutclose
-Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"; Components: engineerfar engineerclose
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"; Components: heavyfar heavyclose
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"; Components: heavyfar heavyclose
-Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"; Components: heavyfar heavyclose
-Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"; Components: pyro
-Type: filesandordirs; Name: "{app}\Robot Heavy Sentry"; Components: roboheavy
-Type: filesandordirs; Name: "{app}\Robot Heavy Sentry.vpk"; Components: roboheavy
-Type: filesandordirs; Name: "{app}\LucarioScout.vpk"; Components: scout_lucario
-Type: filesandordirs; Name: "{app}\SpyWard V4.vpk"; Components: spyward
-Type: filesandordirs; Name: "{#MediaPath}\valve.bik"; Components: valvenew
-Type: filesandordirs; Name: "{app}\scout_alien_hands_000.vpk"; Components: scoutalien
-Type: filesandordirs; Name: "{app}\scout_alien_hands_dir.vpk"; Components: scoutalien
+Type: filesandordirs; Name: "{app}\tf2hudplus-master"; Components: HUDs/tfplus
+Type: filesandordirs; Name: "{app}\rayshud-master"; Components: HUDs/rayshud
+Type: filesandordirs; Name: "{app}\flawhud-master"; Components: HUDs/flawhud
+Type: filesandordirs; Name: "{app}\ahud-master"; Components: HUDs/ahud
+Type: filesandordirs; Name: "{app}\budhud-master"; Components: HUDs/budhud
+Type: filesandordirs; Name: "{app}\toonhud"; Components: HUDs/toonhud
+Type: filesandordirs; Name: "{app}\Tiny Desk Engineers.vpk"; Components: ModelReplace/tinydeskengie
+Type: filesandordirs; Name: "{app}\Robot Heavy Sentry"; Components: ModelReplace/roboheavy
+Type: filesandordirs; Name: "{app}\Robot Heavy Sentry.vpk"; Components: ModelReplace/roboheavy
+Type: filesandordirs; Name: "{app}\LucarioScout.vpk"; Components: ModelReplace/scout_lucario
+Type: filesandordirs; Name: "{app}\scout_alien_hands_000.vpk"; Components: ModelReplace/scoutalien
+Type: filesandordirs; Name: "{app}\scout_alien_hands_dir.vpk"; Components: ModelReplace/scoutalien
+Type: filesandordirs; Name: "{app}\readme.txt"; Components: AnimOver/sniper
+Type: filesandordirs; Name: "{app}\Sniper FP Anim Overhaul.vpk"; Components: AnimOver/sniper
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Far.vpk"; Components: AnimOver/Far/demofar
+Type: filesandordirs; Name: "{app}\Demo FP Anims - Close.vpk"; Components: AnimOver/Close/democlose
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 70+ FOV.vpk"; Components: AnimOver/Far/scoutfar
+Type: filesandordirs; Name: "{app}\Scout FP Overhaul - 54 FOV.vpk"; Components: AnimOver/Close/scoutclose
+Type: filesandordirs; Name: "{app}\Engineer FP Overhaul.vpk"; Components: AnimOver/Far/engineerfar AnimOver/Close/engineerclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1.vpk"; Components: AnimOver/Far/heavyfar AnimOver/Close/heavyclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Minigun Animations.vpk"; Components: AnimOver/Far/heavyfar AnimOver/Close/heavyclose
+Type: filesandordirs; Name: "{app}\Heavy FP Animation Overhaul V3.1 - Alt Fist Animations.vpk"; Components: AnimOver/Far/heavyfar AnimOver/Close/heavyclose
+Type: filesandordirs; Name: "{app}\Kyle Pyro FP Overhaul V.1.vpk"; Components: AnimOver/pyro
+Type: filesandordirs; Name: "{app}\SpyWard V4.vpk"; Components: MiscMods/SoundMods/SpyWard
+Type: filesandordirs; Name: "{#MediaPath}\valve.bik"; Components: MiscMods/ValveNew
 
-Type: filesandordirs; Name: "{app}\my_custom_stuff"; Components: spyward siren snatcher
+
+Type: filesandordirs; Name: "{app}\my_custom_stuff"; Components: MiscMods/SoundMods/Snatcher MiscMods/SoundMods/SpyWard
 
 [Messages]
 BeveledLabel=Team Fortress 2 Mod Installer
