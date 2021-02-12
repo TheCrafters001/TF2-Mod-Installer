@@ -4,35 +4,31 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86012EBB-10B0-4B23-8818-BA3349E473EA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <StartupObject>TF2_Mod_Installer.Main</StartupObject>
-    <RootNamespace>TF2_Mod_Installer</RootNamespace>
-    <AssemblyName>TF2 Mod Installer</AssemblyName>
+    <ProjectGuid>{9D811724-9A1B-47C5-98E1-FF627D38E530}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ModDownload</RootNamespace>
+    <AssemblyName>ModDownload</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Console</MyType>
+    <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>TF2 Mod Installer.xml</DocumentationFile>
+    <DocumentationFile>ModDownload.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>TF2 Mod Installer.xml</DocumentationFile>
+    <DocumentationFile>ModDownload.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -47,20 +43,10 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>assets\ModInstaller_Icon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -79,7 +65,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.vb" />
+    <Compile Include="Downloader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -95,13 +81,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="scripts\appReset.vb" />
-    <Compile Include="scripts\backupMenu.vb" />
-    <Compile Include="scripts\errorHandler.vb" />
-    <Compile Include="scripts\installHandler.vb" />
-    <Compile Include="scripts\modSelecter.vb" />
-    <Compile Include="scripts\settingsMenu.vb" />
-    <Compile Include="scripts\setup.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -112,7 +91,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -122,53 +100,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="assets\ModInstaller.png" />
-    <Content Include="assets\ModInstaller_Banner.bmp" />
-    <Content Include="assets\ModInstaller_Icon.ico" />
-    <Content Include="assets\ModInstaller_Icon.png" />
-    <Content Include="assets\TF2Community_Logo_Trasnparent.png" />
-    <Content Include="assets\TF2_Icon.png" />
-    <Content Include="util\7Zip\7za.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="util\7Zip\7za.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="util\7Zip\7zxa.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="util\WinRAR\license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="util\WinRAR\UnRAR.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Resources\siren2.wav" />
-    <None Include="Resources\siren.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomCommands\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\7zhandler\7zhandler.vbproj">
-      <Project>{398d6b69-6186-4186-b88f-ce9e363b8aae}</Project>
-      <Name>7zhandler</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ModDownload\ModDownload.vbproj">
-      <Project>{9d811724-9a1b-47c5-98e1-ff627d38e530}</Project>
-      <Name>ModDownload</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ModUnzip\ModUnzip.vbproj">
-      <Project>{00fe7c9f-0bce-497f-bf14-2b2c529ff263}</Project>
-      <Name>ModUnzip</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UnRAR_Handler\UnRAR_Handler.vbproj">
-      <Project>{f79ada21-8a0d-4eae-94b6-7c2af955a010}</Project>
-      <Name>UnRAR_Handler</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

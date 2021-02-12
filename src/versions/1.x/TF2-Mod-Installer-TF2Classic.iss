@@ -1,5 +1,5 @@
 #define MyAppName "TF2 Classic Installer"
-#define MyAppVersion "1.0"
+#define MyAppVersion "2.0.1"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 #define SourceModFolder "{autopf}\Steam\steamapps\sourcemods"
@@ -30,6 +30,7 @@ WizardSmallImageFile=.\assets\ModInstallerWizardSmall.bmp
 Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7zxa.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
+Source: "Utilities\scripts\tf2Classic_Install.bat"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 ;TF2-Classic
 Source: "{tmp}\tf2classic.7z"; \
     DestDir: "{tmp}"; \
@@ -38,7 +39,8 @@ Source: "{tmp}\tf2classic.7z"; \
     Check: DwinsHs_Check(ExpandConstant('{tmp}\tf2classic.7z'),  'https://khromier.com/tf2c/tf2classic-2.0.1.7z', 'TF2 Mods', 'get', 0, 0)
 
 [Run]
-Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\tf2classic.7z"" -o""{#SourceModFolder}\"" * -r -aoa"; Flags: runhidden; Description: "Team Fortress 2 Classic"; StatusMsg: "Installing Team Fortress 2 Classic"
+; Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\tf2classic.7z"" -o""{#SourceModFolder}\"" * -r -aoa"; Flags: runhidden; Description: "Team Fortress 2 Classic"; StatusMsg: "Installing Team Fortress 2 Classic"
+Filename: "{tmp}\tf2Classic_Install.bat"; Parameters: """{#SourceModFolder}"" ""{tmp}\tf2classic.7z"""; StatusMsg: "Running install script..."
 
 [Components]
 Name: "full"; Description: "Team Fortress 2 Classic"; ExtraDiskSpaceRequired: 3700000000; Types: main; Flags: fixed

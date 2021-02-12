@@ -4,6 +4,8 @@ Imports System.Windows.Forms
 Module Main
 
     Sub Main()
+        ' Change console foreground color to green,
+        ' This will change the text color.
         Console.ForegroundColor = ConsoleColor.Green
         Console.Title = "Team Fortress 2 Mod Installer"
         Console.WriteLine("===================================")
@@ -17,6 +19,9 @@ Module Main
 
     Sub ModInstaller()
         Console.WriteLine("Loading...")
+        ' Define all user settings.
+        ' This is done in case I need to use them as
+        ' arguments in the main menu.
         Dim preferredName As String = My.Settings.PersonalName
         Dim customFolder As String = My.Settings.CustomFolder
         Dim tf2InstallPath As String = My.Settings.tf2InstallPath
@@ -24,6 +29,7 @@ Module Main
         Dim steam As String = My.Settings.SteamFolder
         Dim keeptemp As Boolean = My.Settings.KeepTempFiles
 
+        ' Create choices.
         Dim choice As Integer
 
         Console.Clear()
@@ -40,17 +46,17 @@ Module Main
         Console.WriteLine("3) Backup Options")
         Console.WriteLine("4) Settings")
         Console.WriteLine("5) About")
-        Console.WriteLine("6) Check for Updates")
         Console.WriteLine("")
         Console.WriteLine("")
         Console.Write("Select an option: ")
+        ' Read the input.
         Try
             choice = Console.ReadLine()
         Catch ex As Exception
             errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End Try
 
-
+        ' Check input.
         If choice = 1 Then
             modSelecter.ModMenu(False)
         ElseIf choice = 2 Then
@@ -61,9 +67,6 @@ Module Main
             settingsMenu.settings()
         ElseIf choice = 5 Then
             settingsMenu.about()
-        ElseIf choice = 6 Then
-            Console.WriteLine("Checking for updates...")
-            settingsMenu.updateCheck()
         Else
             errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End If
@@ -72,10 +75,13 @@ Module Main
     Sub Checker()
         Console.WriteLine("Initializing...")
         If My.Settings.IsFirstTime = True Then
+            ' Launch Presetup if this is the users first time
+            ' using the tool.
             setup.PreSetup()
             Console.Title = "Team Fortress 2 Mod Installer"
             ModInstaller()
         ElseIf My.Settings.IsFirstTime = False Then
+            ' Otherwise, carry on.
             ModInstaller()
         End If
     End Sub

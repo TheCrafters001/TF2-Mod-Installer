@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TF2 Mod Installer")>
-<Assembly: AssemblyDescription("Team Fortress 2 Mod Installer - Version 2.X")>
-<Assembly: AssemblyCompany("TheCrafters001")>
-<Assembly: AssemblyProduct("TF2 Mod Installer")>
+<Assembly: AssemblyTitle("ModDownload")>
+<Assembly: AssemblyDescription("Handles the downloading of mods.")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("ModDownload")>
 <Assembly: AssemblyCopyright("Copyright © TheCrafters001 2021")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("d089cd56-b72e-41c8-949a-e1ba0921ec6a")>
+<Assembly: Guid("c7a8ae71-b47a-4aba-bcd7-658c2be6f486")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("2.0.0.0")>
-<Assembly: AssemblyFileVersion("2.0.0.0")>
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

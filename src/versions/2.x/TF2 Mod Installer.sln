@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TF2 Mod Installer", "TF2 Mod Installer\TF2 Mod Installer.vbproj", "{86012EBB-10B0-4B23-8818-BA3349E473EA}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModDownload", "ModDownload\ModDownload.vbproj", "{9D811724-9A1B-47C5-98E1-FF627D38E530}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModUnzip", "ModUnzip\ModUnzip.vbproj", "{00FE7C9F-0BCE-497F-BF14-2B2C529FF263}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "7zhandler", "7zhandler\7zhandler.vbproj", "{398D6B69-6186-4186-B88F-CE9E363B8AAE}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModHandler", "ModHandler\ModHandler.vbproj", "{A1969945-923D-4437-A69D-EBCE1E8DD03A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnRAR_Handler", "UnRAR_Handler\UnRAR_Handler.vbproj", "{F79ADA21-8A0D-4EAE-94B6-7C2AF955A010}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{86012EBB-10B0-4B23-8818-BA3349E473EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86012EBB-10B0-4B23-8818-BA3349E473EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86012EBB-10B0-4B23-8818-BA3349E473EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D811724-9A1B-47C5-98E1-FF627D38E530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D811724-9A1B-47C5-98E1-FF627D38E530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D811724-9A1B-47C5-98E1-FF627D38E530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D811724-9A1B-47C5-98E1-FF627D38E530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FE7C9F-0BCE-497F-BF14-2B2C529FF263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FE7C9F-0BCE-497F-BF14-2B2C529FF263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FE7C9F-0BCE-497F-BF14-2B2C529FF263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FE7C9F-0BCE-497F-BF14-2B2C529FF263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398D6B69-6186-4186-B88F-CE9E363B8AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398D6B69-6186-4186-B88F-CE9E363B8AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398D6B69-6186-4186-B88F-CE9E363B8AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398D6B69-6186-4186-B88F-CE9E363B8AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1969945-923D-4437-A69D-EBCE1E8DD03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1969945-923D-4437-A69D-EBCE1E8DD03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1969945-923D-4437-A69D-EBCE1E8DD03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1969945-923D-4437-A69D-EBCE1E8DD03A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79ADA21-8A0D-4EAE-94B6-7C2AF955A010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79ADA21-8A0D-4EAE-94B6-7C2AF955A010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79ADA21-8A0D-4EAE-94B6-7C2AF955A010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79ADA21-8A0D-4EAE-94B6-7C2AF955A010}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

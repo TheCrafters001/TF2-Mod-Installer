@@ -1,7 +1,5 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
-Imports AutoUpdaterDotNET
-
 Public Class settingsMenu
     Public Shared Sub settings()
         Console.WriteLine("Loading settings...")
@@ -179,19 +177,6 @@ Public Class settingsMenu
         Console.WriteLine(String.Format("Version: {0}", My.Application.Info.Version.ToString))
         Console.WriteLine("Press ENTER to continue.")
         Console.ReadKey(Keys.Enter)
-        Main.Main()
-    End Sub
-    Public Shared Sub updateCheck()
-        AutoUpdater.ShowSkipButton = True
-        AutoUpdater.ShowRemindLaterButton = True
-        AutoUpdater.ReportErrors = True
-        AutoUpdater.RunUpdateAsAdmin = True
-        AutoUpdater.LetUserSelectRemindLater = True
-        AutoUpdater.RemindLaterTimeSpan = RemindLaterFormat.Hours
-        AutoUpdater.RemindLaterAt = 1
-        AutoUpdater.UpdateFormSize = New System.Drawing.Size(925, 665)
-        AutoUpdater.Start("https://api.thecrafters001.ga/updates/modinstaller.xml")
-        Console.WriteLine("Done!")
         Main.Main()
     End Sub
 End Class
