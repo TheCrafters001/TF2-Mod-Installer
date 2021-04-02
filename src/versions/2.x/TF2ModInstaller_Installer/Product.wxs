@@ -12,6 +12,12 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
 		
+		<!-- Define Images -->
+		<WixVariable Id="WixUIBannerBmp" Value="img\ModInstaller_Banner.bmp" />
+        <WixVariable Id="WixUIDialogBmp" Value="img\BackgroundLogo.bmp" />
+        <!-- Define License -->
+        <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\gpl-3.0.rtf" />
+		
 		<UI>
             <!-- Define UI -->
             <UIRef Id="WixUI_ErrorProgressText" />
