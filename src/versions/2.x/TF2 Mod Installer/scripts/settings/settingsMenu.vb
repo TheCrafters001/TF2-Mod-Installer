@@ -169,7 +169,7 @@ Public Class settingsMenu
         Console.WriteLine("= Team Fortress 2 Mod Installer   =")
         Console.WriteLine("===================================")
         Console.WriteLine("= GNU GPL V3.0                    =")
-        Console.WriteLine("= Copyright © TheCrafters001 2020 =")
+        Console.WriteLine("= Copyright (C) TheCrafters001 2020 =")
         Console.WriteLine("===================================")
         Console.WriteLine("Team Fortress 2 Mod Installer, or TF2 Mod Installer, is a free-to-use mod installer for the game Team Fortress 2.")
         Console.WriteLine("This software is free, and always will be. You can even view the source code on GitHub.")

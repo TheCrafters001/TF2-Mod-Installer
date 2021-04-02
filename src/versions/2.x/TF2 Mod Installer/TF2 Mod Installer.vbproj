@@ -95,13 +95,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="scripts\appReset.vb" />
-    <Compile Include="scripts\backupMenu.vb" />
-    <Compile Include="scripts\errorHandler.vb" />
-    <Compile Include="scripts\installHandler.vb" />
-    <Compile Include="scripts\modSelecter.vb" />
-    <Compile Include="scripts\settingsMenu.vb" />
-    <Compile Include="scripts\setup.vb" />
+    <Compile Include="scripts\mod\ModMenus\Huds.vb" />
+    <Compile Include="scripts\mod\modUninstaller.vb" />
+    <Compile Include="scripts\settings\appReset.vb" />
+    <Compile Include="scripts\settings\backupMenu.vb" />
+    <Compile Include="scripts\misc\errorHandler.vb" />
+    <Compile Include="scripts\misc\installHandler.vb" />
+    <Compile Include="scripts\mod\modSelecter.vb" />
+    <Compile Include="scripts\settings\settingsMenu.vb" />
+    <Compile Include="scripts\settings\setup.vb" />
+    <Compile Include="scripts\mod\tempFileCleaner.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -125,12 +128,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\ModInstaller.png" />
-    <Content Include="assets\ModInstaller_Banner.bmp" />
-    <Content Include="assets\ModInstaller_Icon.ico" />
-    <Content Include="assets\ModInstaller_Icon.png" />
-    <Content Include="assets\TF2Community_Logo_Trasnparent.png" />
-    <Content Include="assets\TF2_Icon.png" />
+    <Content Include="assets\ModInstaller.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\ModInstaller_Banner.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\ModInstaller_Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\ModInstaller_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\TF2Community_Logo_Trasnparent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\TF2_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="util\7Zip\7za.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

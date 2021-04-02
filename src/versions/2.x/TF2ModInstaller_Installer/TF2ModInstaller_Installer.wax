@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DeployedProjects>
+    <string>7zhandler\7zhandler.vbproj</string>
+    <string>ModDownload\ModDownload.vbproj</string>
+    <string>ModHandler\ModHandler.vbproj</string>
+    <string>ModUnzip\ModUnzip.vbproj</string>
+    <string>TF2 Mod Installer\TF2 Mod Installer.vbproj</string>
+    <string>UnRAR_Handler\UnRAR_Handler.vbproj</string>
+  </DeployedProjects>
+  <DirectoryMappings>
+    <Item Key="" Value="INSTALLFOLDER" />
+  </DirectoryMappings>
+  <FileMappings />
+  <DeploySymbols>false</DeploySymbols>
+  <DeployLocalizations>true</DeployLocalizations>
+  <DeployExternalLocalizations>false</DeployExternalLocalizations>
+  <ExcludedProjectItems>-</ExcludedProjectItems>
+</Configuration>

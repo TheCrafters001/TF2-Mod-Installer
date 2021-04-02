@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<?define UnRAR_Handler_TargetDir=$(var.UnRAR_Handler.TargetDir)?>
+	<?define TF2 Mod Installer_TargetDir=$(var.TF2 Mod Installer.TargetDir)?>
+	<?define 7zhandler_TargetDir=$(var.7zhandler.TargetDir)?>
+	<?define ModDownload_TargetDir=$(var.ModDownload.TargetDir)?>
+	<?define ModUnzip_TargetDir=$(var.ModUnzip.TargetDir)?>
+	<?define ModHandler_TargetDir=$(var.ModHandler.TargetDir)?>
+	<Product Id="*" Name="TF2 Mod Installer (2.x)" Language="1033" Version="2.0.0.0" Manufacturer="TheCrafters001" UpgradeCode="39f59173-8293-472b-bec9-f6249bb5def0">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+		
+		<UI>
+            <!-- Define UI -->
+            <UIRef Id="WixUI_ErrorProgressText" />
+            <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+			<UIRef Id="WixUI_InstallDir" />
+            <!-- <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish> -->
+        </UI>
+
+		<Feature Id="ProductFeature" Title="TF2ModInstaller_Installer" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="assets_files" />
+			<ComponentGroupRef Id="util_7Zip_files" />
+			<ComponentGroupRef Id="util_WinRAR_files" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="TheCrafters001" Name="TheCrafters001">
+					<Directory Id="INSTALLFOLDER" Name="TF2 Mod Installer">
+					  <Directory Id="assets" Name="assets" />
+					  <Directory Id="util" Name="util">
+					    <Directory Id="util_WinRAR" Name="WinRAR" />
+					    <Directory Id="util_7Zip" Name="7Zip" />
+					  </Directory>
+					</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+		<Component Id="UnRAR_Handler.dll" Guid="96969e4b-dec8-4c53-9231-b85b15c64ced">
+		  <File Id="UnRAR_Handler.dll" Name="UnRAR_Handler.dll" Source="$(var.UnRAR_Handler_TargetDir)UnRAR_Handler.dll" />
+		</Component>
+		<Component Id="_7zhandler.dll" Guid="fb937a20-7242-4a24-924b-121afb909984">
+		  <File Id="_7zhandler.dll" Name="7zhandler.dll" Source="$(var.7zhandler_TargetDir)7zhandler.dll" />
+		</Component>
+		<Component Id="ModDownload.dll" Guid="776fad93-6f36-482e-9839-aa2b5f6edd47">
+		  <File Id="ModDownload.dll" Name="ModDownload.dll" Source="$(var.ModDownload_TargetDir)ModDownload.dll" />
+		</Component>
+		<Component Id="TF2_Mod_Installer.exe.config" Guid="41516139-7b35-4a05-8d60-273b7389445a">
+		  <File Id="TF2_Mod_Installer.exe.config" Name="TF2 Mod Installer.exe.config" Source="$(var.TF2 Mod Installer_TargetDir)TF2 Mod Installer.exe.config" />
+		</Component>
+		<Component Id="TF2_Mod_Installer.exe" Guid="776db466-50ed-4599-895a-44b6096af93b">
+		  <File Id="TF2_Mod_Installer.exe" Name="TF2 Mod Installer.exe" Source="$(var.TF2 Mod Installer_TargetDir)TF2 Mod Installer.exe" />
+		</Component>
+		<Component Id="ModUnzip.dll" Guid="f47d3b62-202a-4e27-bb60-1718b6914dde">
+		  <File Id="ModUnzip.dll" Name="ModUnzip.dll" Source="$(var.ModUnzip_TargetDir)ModUnzip.dll" />
+		</Component>
+		<Component Id="ModHandler.dll" Guid="65bbeebc-3293-4760-99bd-f29f038b8a99">
+		  <File Id="ModHandler.dll" Name="ModHandler.dll" Source="$(var.ModHandler_TargetDir)ModHandler.dll" />
+		</Component>
+			
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="assets_files" Directory="assets">
+      <Component Id="assets_ModInstaller_Banner.bmp" Guid="83c1a73b-285d-41c5-9103-b76ec616133d">
+        <File Id="assets_ModInstaller_Banner.bmp" Name="ModInstaller_Banner.bmp" Source="$(var.TF2 Mod Installer_TargetDir)assets\ModInstaller_Banner.bmp" />
+      </Component>
+      <Component Id="assets_ModInstaller.png" Guid="67b18a61-849b-40e6-a387-be5cd4a29ad1">
+        <File Id="assets_ModInstaller.png" Name="ModInstaller.png" Source="$(var.TF2 Mod Installer_TargetDir)assets\ModInstaller.png" />
+      </Component>
+      <Component Id="assets_ModInstaller_Icon.png" Guid="f2c7490b-caf1-4436-8e11-a967c4935133">
+        <File Id="assets_ModInstaller_Icon.png" Name="ModInstaller_Icon.png" Source="$(var.TF2 Mod Installer_TargetDir)assets\ModInstaller_Icon.png" />
+      </Component>
+      <Component Id="assets_TF2Community_Logo_Trasnparent.png" Guid="ed204065-5155-460d-adc4-34cf95cc58d9">
+        <File Id="assets_TF2Community_Logo_Trasnparent.png" Name="TF2Community_Logo_Trasnparent.png" Source="$(var.TF2 Mod Installer_TargetDir)assets\TF2Community_Logo_Trasnparent.png" />
+      </Component>
+      <Component Id="assets_TF2_Icon.png" Guid="5ffcdb72-ca02-4cfc-ad89-943464724030">
+        <File Id="assets_TF2_Icon.png" Name="TF2_Icon.png" Source="$(var.TF2 Mod Installer_TargetDir)assets\TF2_Icon.png" />
+      </Component>
+      <Component Id="assets_ModInstaller_Icon.ico" Guid="5f058fd4-0194-4138-89ff-3e40f5d867c0">
+        <File Id="assets_ModInstaller_Icon.ico" Name="ModInstaller_Icon.ico" Source="$(var.TF2 Mod Installer_TargetDir)assets\ModInstaller_Icon.ico" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="util_7Zip_files" Directory="util_7Zip">
+      <Component Id="util_7Zip_7za.exe" Guid="457cf767-0876-4112-9e25-dcd66743560d">
+        <File Id="util_7Zip_7za.exe" Name="7za.exe" Source="$(var.TF2 Mod Installer_TargetDir)util\7Zip\7za.exe" />
+      </Component>
+      <Component Id="util_7Zip_7za.dll" Guid="5665b733-5835-4eba-a7b4-becb6d09624e">
+        <File Id="util_7Zip_7za.dll" Name="7za.dll" Source="$(var.TF2 Mod Installer_TargetDir)util\7Zip\7za.dll" />
+      </Component>
+      <Component Id="util_7Zip_7zxa.dll" Guid="281e1556-34a2-4b30-8d72-cf69f135d14e">
+        <File Id="util_7Zip_7zxa.dll" Name="7zxa.dll" Source="$(var.TF2 Mod Installer_TargetDir)util\7Zip\7zxa.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="util_WinRAR_files" Directory="util_WinRAR">
+      <Component Id="util_WinRAR_UnRAR.exe" Guid="95cc69ec-eae1-4323-8d46-d930719e21d7">
+        <File Id="util_WinRAR_UnRAR.exe" Name="UnRAR.exe" Source="$(var.TF2 Mod Installer_TargetDir)util\WinRAR\UnRAR.exe" />
+      </Component>
+      <Component Id="util_WinRAR_license.txt" Guid="4cfd2012-feb9-40a8-bb2a-f1940853f8bb">
+        <File Id="util_WinRAR_license.txt" Name="license.txt" Source="$(var.TF2 Mod Installer_TargetDir)util\WinRAR\license.txt" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

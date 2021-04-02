@@ -12,7 +12,7 @@ Module Main
         Console.WriteLine("= Team Fortress 2 Mod Installer   =")
         Console.WriteLine("===================================")
         Console.WriteLine("= GNU GPL V3.0                    =")
-        Console.WriteLine("= Copyright © TheCrafters001 2020 =")
+        Console.WriteLine("= Copyright (C) TheCrafters001 2020 =")
         Console.WriteLine("===================================")
         Checker()
     End Sub
@@ -38,7 +38,7 @@ Module Main
         Console.WriteLine("= Team Fortress 2 Mod Installer   =")
         Console.WriteLine("===================================")
         Console.WriteLine("= GNU GPL V3.0                    =")
-        Console.WriteLine("= Copyright © TheCrafters001 2020 =")
+        Console.WriteLine("= Copyright (C) TheCrafters001 2020 =")
         Console.WriteLine("===================================")
         Console.WriteLine("Welcome, " + preferredName)
         Console.WriteLine("1) Install a Mod")
