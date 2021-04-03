@@ -33,7 +33,7 @@
         ElseIf choice = 1 Then
             HudMenu.Huds(isUninstall)
         ElseIf choice = 2 Then
-
+            MiscMenu.Misc(isUninstall)
         ElseIf choice = 3 Then
 
         ElseIf choice = 4 Then

@@ -96,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="scripts\mod\ModMenus\Huds.vb" />
+    <Compile Include="scripts\mod\ModMenus\Misc.vb" />
     <Compile Include="scripts\mod\modUninstaller.vb" />
     <Compile Include="scripts\settings\appReset.vb" />
     <Compile Include="scripts\settings\backupMenu.vb" />
