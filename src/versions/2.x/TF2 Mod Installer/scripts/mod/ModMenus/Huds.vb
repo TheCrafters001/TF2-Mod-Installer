@@ -30,7 +30,7 @@ Public Class HudMenu
         Try
             choice = Console.ReadLine()
         Catch ex As Exception
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler(ex.ToString, "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End Try
 
 
@@ -54,7 +54,7 @@ Public Class HudMenu
                     Main.Main()
                 End If
             Catch ex As Exception
-                errorHandler.errorHandler("Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
+                errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         ElseIf choice = 2 Then
             Try
@@ -74,7 +74,7 @@ Public Class HudMenu
                     Main.Main()
                 End If
             Catch ex As Exception
-                errorHandler.errorHandler("Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
+                errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         ElseIf choice = 3 Then
             Try
@@ -94,7 +94,7 @@ Public Class HudMenu
                     Main.Main()
                 End If
             Catch ex As Exception
-                errorHandler.errorHandler("Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
+                errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         ElseIf choice = 4 Then
             Try
@@ -114,7 +114,7 @@ Public Class HudMenu
                     Main.Main()
                 End If
             Catch ex As Exception
-                errorHandler.errorHandler("Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
+                errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         ElseIf choice = 5 Then
             Try
@@ -134,7 +134,7 @@ Public Class HudMenu
                     Main.Main()
                 End If
             Catch ex As Exception
-                errorHandler.errorHandler("Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
+                errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         End If
     End Sub

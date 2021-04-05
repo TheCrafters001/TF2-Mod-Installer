@@ -53,7 +53,7 @@ Module Main
         Try
             choice = Console.ReadLine()
         Catch ex As Exception
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler(ex.ToString, "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End Try
 
         ' Check input.
@@ -68,7 +68,7 @@ Module Main
         ElseIf choice = 5 Then
             settingsMenu.about()
         Else
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler("", "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End If
     End Sub
 

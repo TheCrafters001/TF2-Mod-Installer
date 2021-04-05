@@ -7,6 +7,7 @@
     <string>ModUnzip\ModUnzip.vbproj</string>
     <string>TF2 Mod Installer\TF2 Mod Installer.vbproj</string>
     <string>UnRAR_Handler\UnRAR_Handler.vbproj</string>
+    <string>ErrorLogger\ErrorLogger.vbproj</string>
   </DeployedProjects>
   <DirectoryMappings>
     <Item Key="" Value="INSTALLFOLDER" />

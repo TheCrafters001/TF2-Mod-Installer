@@ -30,7 +30,7 @@ Public Class setup
             My.Settings.CustomFolder = defaultPath
             Setup()
         Catch ex As Exception
-            errorHandler.errorHandler("Pre-Setup Error", "TF2MI-Error-00001", ex.ToString)
+            errorHandler.errorHandler(ex.ToString, "Pre-Setup Error", "TF2MI-Error-00001", ex.ToString)
         End Try
     End Sub
     Public Shared Sub Setup()
@@ -118,7 +118,7 @@ Public Class setup
             End If
             PostSetup()
         Catch ex As Exception
-            errorHandler.errorHandler("Setup Error", "TF2MI-Error-00002", ex.ToString)
+            errorHandler.errorHandler(ex.ToString, "Setup Error", "TF2MI-Error-00002", ex.ToString)
         End Try
     End Sub
     Public Shared Sub PostSetup()
@@ -143,7 +143,7 @@ Public Class setup
             Console.Clear()
             My.Settings.Save()
         Catch ex As Exception
-            errorHandler.errorHandler("Post-Setup Error", "TF2MI-Error-00003", ex.ToString)
+            errorHandler.errorHandler(ex.ToString, "Post-Setup Error", "TF2MI-Error-00003", ex.ToString)
         End Try
     End Sub
 End Class

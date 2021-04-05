@@ -1,7 +1,9 @@
 ﻿Imports System.Windows.Forms
+Imports ErrorLogger
 
 Public Class errorHandler
-    Public Shared Sub errorHandler(Optional ByVal errorName As String = "Unknown", Optional ByVal errorCode As String = "TF2MI-Error-00000", Optional ByVal errorString As String = "No full error is needed for this type of error.")
+    Public Shared Sub errorHandler(ByVal Er As String, Optional ByVal errorName As String = "Unknown", Optional ByVal errorCode As String = "TF2MI-Error-00000", Optional ByVal errorString As String = "No full error is needed for this type of error.")
+        Logger.Input(errorName + " (" + errorCode + ") (" + errorString + ")" + vbCrLf + Er)
         Console.WriteLine("")
         Console.WriteLine("")
         Console.WriteLine("")
@@ -18,6 +20,8 @@ Public Class errorHandler
         Console.WriteLine("The full error will now be displayed, if needed:")
         Console.WriteLine("")
         Console.WriteLine(errorString)
+        Console.WriteLine("")
+        Console.WriteLine("For full error details, an error file has been saved at: " & Environment.CurrentDirectory & "\ErrorLog.txt")
         Console.WriteLine("Press ENTER to attempt to recover.")
         Console.ReadKey(Keys.Enter)
         Try

@@ -5,8 +5,8 @@
 	<?define 7zhandler_TargetDir=$(var.7zhandler.TargetDir)?>
 	<?define ModDownload_TargetDir=$(var.ModDownload.TargetDir)?>
 	<?define ModUnzip_TargetDir=$(var.ModUnzip.TargetDir)?>
-	<?define ModHandler_TargetDir=$(var.ModHandler.TargetDir)?>
-	<Product Id="*" Name="TF2 Mod Installer (2.x)" Language="1033" Version="1.9.0.0" Manufacturer="TheCrafters001" UpgradeCode="39f59173-8293-472b-bec9-f6249bb5def0">
+	<?define ModHandler_TargetDir=$(var.ModHandler.TargetDir)?><?define ErrorLogger_TargetDir=$(var.ErrorLogger.TargetDir)?>
+	<Product Id="*" Name="TF2 Mod Installer (2.x)" Language="1033" Version="1.9.1.0" Manufacturer="TheCrafters001" UpgradeCode="39f59173-8293-472b-bec9-f6249bb5def0">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -28,6 +28,7 @@
 
 		<Feature Id="ProductFeature" Title="TF2ModInstaller_Installer" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="ApplicationShortcut" />
 			<ComponentGroupRef Id="assets_files" />
 			<ComponentGroupRef Id="util_7Zip_files" />
 			<ComponentGroupRef Id="util_WinRAR_files" />
@@ -36,6 +37,9 @@
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="TF2 Mod Installer" />
+			</Directory>
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="TheCrafters001" Name="TheCrafters001">
 					<Directory Id="INSTALLFOLDER" Name="TF2 Mod Installer">
@@ -49,6 +53,19 @@
 			</Directory>
 		</Directory>
 	</Fragment>
+	
+	
+	<!-- Shortcut & Registry -->
+    <Fragment>
+        <DirectoryRef Id="ApplicationProgramsFolder">
+			<Component Id="ApplicationShortcut" Guid="ab1d404c-8330-4e6e-91e1-d546e49d32e1">
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="TF2 Mod Installer" Description="TF2 Mod Installer" Target="[INSTALLFOLDER]TF2 Mod Installer.exe" WorkingDirectory="INSTALLDIR" />
+				<RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\TheCrafters001\TF2 Mod Installer" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+    </Fragment>
+		
 
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
@@ -72,6 +89,9 @@
 		</Component>
 		<Component Id="ModHandler.dll" Guid="65bbeebc-3293-4760-99bd-f29f038b8a99">
 		  <File Id="ModHandler.dll" Name="ModHandler.dll" Source="$(var.ModHandler_TargetDir)ModHandler.dll" />
+		</Component>
+		<Component Id="ErrorLogger.dll" Guid="d881e8bc-fc88-4a46-b24b-a5d792183859">
+		  <File Id="ErrorLogger.dll" Name="ErrorLogger.dll" Source="$(var.ErrorLogger_TargetDir)ErrorLogger.dll" />
 		</Component>
 			
 		</ComponentGroup>

@@ -173,6 +173,10 @@
       <Project>{398d6b69-6186-4186-b88f-ce9e363b8aae}</Project>
       <Name>7zhandler</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ErrorLogger\ErrorLogger.vbproj">
+      <Project>{c8335c52-883b-49b8-9e94-becebb4dacbc}</Project>
+      <Name>ErrorLogger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModDownload\ModDownload.vbproj">
       <Project>{9d811724-9a1b-47c5-98e1-ff627d38e530}</Project>
       <Name>ModDownload</Name>

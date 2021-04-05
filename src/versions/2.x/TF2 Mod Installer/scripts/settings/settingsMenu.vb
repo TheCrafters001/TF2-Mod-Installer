@@ -32,7 +32,7 @@ Public Class settingsMenu
         Try
             choice = Console.ReadLine()
         Catch ex As Exception
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler(ex.ToString, "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End Try
         If choice = 1 Then
             Console.Clear()
@@ -128,7 +128,7 @@ Public Class settingsMenu
                 Console.ReadKey(Keys.Enter)
                 settings()
             Catch ex As Exception
-                errorHandler.errorHandler("Pre-Setup Error", "TF2MI-Error-00001", ex.ToString)
+                errorHandler.errorHandler(ex.ToString, "Pre-Setup Error", "TF2MI-Error-00001", ex.ToString)
             End Try
         ElseIf choice = 5 Then
             Console.Clear()
@@ -159,7 +159,7 @@ Public Class settingsMenu
         ElseIf choice = 0 Then
             Main.Main()
         Else
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler("", "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End If
     End Sub
     Public Shared Sub about()

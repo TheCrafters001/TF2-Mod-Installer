@@ -24,7 +24,7 @@
         Try
             choice = Console.ReadLine()
         Catch ex As Exception
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler(ex.ToString, "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End Try
 
 
@@ -33,7 +33,7 @@
         ElseIf choice = 1 Then
             HudMenu.Huds(isUninstall)
         ElseIf choice = 2 Then
-            MiscMenu.Misc(isUninstall)
+
         ElseIf choice = 3 Then
 
         ElseIf choice = 4 Then
@@ -41,9 +41,9 @@
         ElseIf choice = 5 Then
 
         ElseIf choice = 6 Then
-
+            MiscMenu.Misc(isUninstall)
         Else
-            errorHandler.errorHandler("Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
+            errorHandler.errorHandler("", "Selection menu error", "TF2MI-Error-00004", "You selected an option that either doesn't exist in the list, or is not a number." + vbCrLf + "Please press enter to recover.")
         End If
     End Sub
 

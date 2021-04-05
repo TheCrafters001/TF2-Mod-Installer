@@ -12,7 +12,7 @@ Public Class tempFileCleaner
                 cleanTemp()
             Catch ex As Exception
                 Debug.WriteLine(ex)
-                errorHandler.errorHandler("Temporary File Cleaner", "TF2MI-Error-00005", "Cannot delete temporary files.")
+                errorHandler.errorHandler(ex.ToString, "Temporary File Cleaner", "TF2MI-Error-00005", "Cannot delete temporary files.")
             End Try
         End If
     End Sub
