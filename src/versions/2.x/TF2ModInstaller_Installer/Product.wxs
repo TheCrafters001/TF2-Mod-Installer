@@ -6,7 +6,7 @@
 	<?define ModDownload_TargetDir=$(var.ModDownload.TargetDir)?>
 	<?define ModUnzip_TargetDir=$(var.ModUnzip.TargetDir)?>
 	<?define ModHandler_TargetDir=$(var.ModHandler.TargetDir)?><?define ErrorLogger_TargetDir=$(var.ErrorLogger.TargetDir)?>
-	<Product Id="*" Name="TF2 Mod Installer (2.x)" Language="1033" Version="1.9.2.0" Manufacturer="TheCrafters001" UpgradeCode="39f59173-8293-472b-bec9-f6249bb5def0">
+	<Product Id="*" Name="TF2 Mod Installer (2.x)" Language="1033" Version="1.9.3.0" Manufacturer="TheCrafters001" UpgradeCode="39f59173-8293-472b-bec9-f6249bb5def0">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -59,7 +59,7 @@
     <Fragment>
         <DirectoryRef Id="ApplicationProgramsFolder">
 			<Component Id="ApplicationShortcut" Guid="ab1d404c-8330-4e6e-91e1-d546e49d32e1">
-				<Shortcut Id="ApplicationStartMenuShortcut" Name="TF2 Mod Installer" Description="TF2 Mod Installer" Target="[INSTALLFOLDER]TF2 Mod Installer.exe" WorkingDirectory="INSTALLDIR" />
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="TF2 Mod Installer" Description="TF2 Mod Installer" Target="[INSTALLFOLDER]TF2 Mod Installer.exe" WorkingDirectory="INSTALLFOLDER" />
 				<RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
 				<RegistryValue Root="HKCU" Key="Software\TheCrafters001\TF2 Mod Installer" Name="installed" Type="integer" Value="1" KeyPath="yes" />
 			</Component>

@@ -5,8 +5,6 @@ Public Class appReset
         Dim choice As String
         Dim finalChoice As String
         Console.Clear()
-        Console.ForegroundColor = ConsoleColor.Red
-        My.Computer.Audio.Play(My.Resources.siren, AudioPlayMode.BackgroundLoop)
         Console.WriteLine("===============================")
         Console.WriteLine("=           WARNING           =")
         Console.WriteLine("===============================")
@@ -19,8 +17,6 @@ Public Class appReset
         choice = choice.ToUpper
         Try
             If choice = "Y" Then
-                My.Computer.Audio.Stop()
-                My.Computer.Audio.Play(My.Resources.siren2, AudioPlayMode.BackgroundLoop)
                 Console.WriteLine("")
                 Console.WriteLine("FINAL WARNING.")
                 Console.Write("ARE YOU REALLY SURE YOU WANT TO RESET? [Y/N]: ")
