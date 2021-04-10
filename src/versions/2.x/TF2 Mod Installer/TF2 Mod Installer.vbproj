@@ -95,9 +95,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="scripts\misc\my_Custom_Stuff_Gen.vb" />
     <Compile Include="scripts\mod\ModMenus\Huds.vb" />
     <Compile Include="scripts\mod\ModMenus\Misc.vb" />
     <Compile Include="scripts\mod\modUninstaller.vb" />
+    <Compile Include="scripts\mod\sndModInstall.vb" />
     <Compile Include="scripts\settings\appReset.vb" />
     <Compile Include="scripts\settings\backupMenu.vb" />
     <Compile Include="scripts\misc\errorHandler.vb" />
@@ -165,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomCommands\" />
+    <Folder Include="scripts\misc\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\7zhandler\7zhandler.vbproj">
