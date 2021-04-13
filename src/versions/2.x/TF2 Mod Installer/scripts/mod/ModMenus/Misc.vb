@@ -57,7 +57,21 @@ Public Class MiscMenu
                 errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
         ElseIf choice = 5 Then
-            Downloader.DownloadNow("tf2c_installer.exe", "https://github.com/TheCrafters001/TF2-Mod-Installer/releases/download/1.6/TF2-Classic_Installer.exe", "Team Fortress 2 Classic")
+            If IsUninstall = False Then
+                Downloader.DownloadNow("tf2c_installer.exe", "https://github.com/TheCrafters001/TF2-Mod-Installer/releases/download/1.6/TF2-Classic_Installer.exe", "Team Fortress 2 Classic")
+                TF2C.TF2CInst()
+                tempFileCleaner.Init()
+                Console.WriteLine("Done installing mod.")
+                Console.WriteLine("Press ENTER to continue.")
+                Console.ReadKey(Keys.Enter)
+                Main.Main()
+            ElseIf IsUninstall = True Then
+                TF2C.TF2CUNInst()
+                Console.WriteLine("Done removing mod.")
+                Console.WriteLine("Press ENTER to continue.")
+                Console.ReadKey(Keys.Enter)
+                Main.Main()
+            End If
 
         End If
     End Sub
