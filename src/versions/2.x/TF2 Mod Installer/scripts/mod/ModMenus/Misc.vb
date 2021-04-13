@@ -21,6 +21,7 @@ Public Class MiscMenu
         Console.WriteLine("2) New Valve Intro")
         Console.WriteLine("3) Robo Heavy Sentry")
         Console.WriteLine("4) JJBA ""RETIRED"" Killsound")
+        Console.WriteLine("5) Team Fortress 2 Classic")
         Console.WriteLine("0) Cancel")
         Console.WriteLine("")
         Console.WriteLine("")
@@ -55,6 +56,9 @@ Public Class MiscMenu
             Catch ex As Exception
                 errorHandler.errorHandler(ex.ToString, "Failed to Install/Uninstall Mod", "TF2MI-Error-00007", "Something went wrong, and the mod could not be installed/uninstalled." + vbCrLf + "Please press enter to recover.")
             End Try
+        ElseIf choice = 5 Then
+            Downloader.DownloadNow("tf2c_installer.exe", "https://github.com/TheCrafters001/TF2-Mod-Installer/releases/download/1.6/TF2-Classic_Installer.exe", "Team Fortress 2 Classic")
+
         End If
     End Sub
 End Class
