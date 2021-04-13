@@ -18,11 +18,16 @@ Public Class Downloader
                 MkDir(tmp)
             End If
 
-            'Download Mod ZIP
-            Using client = New WebClient
-                Console.WriteLine("Attempting to download: " + modName)
-                client.DownloadFile(New Uri(fileURL), tmp + fileName)
-            End Using
+            If My.Computer.FileSystem.FileExists(tmp + fileName) Then
+                Console.WriteLine("Temporary file already downloaded.")
+            Else
+                'Download Mod ZIP
+                Using client = New WebClient
+                    Console.WriteLine("Attempting to download: " + modName)
+                    client.DownloadFile(New Uri(fileURL), tmp + fileName)
+                End Using
+            End If
+
         Catch ex As Exception
             MessageBox.Show("Sorry, cannot download file: " & ex.ToString, "Cannot Download", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
