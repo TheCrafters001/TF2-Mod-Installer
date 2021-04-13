@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "TF2 Mod Installer"
-#define MyAppVersion "1.8"
+#define MyAppVersion "1.9"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 
@@ -69,7 +69,7 @@ Source: "{tmp}\toonhud.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: HUDs/toonhud; \
-    Check: DwinsHs_Check(ExpandConstant('{tmp}\toonhud.zip'),  'https://huds.tf/forum/xthreads_attach.php/189_1540069319_c009f7a4/852720773417a4e0068d441ec0c4a10e/toonhud__11-1.zip', 'TF2 Mods', 'get', 0, 0)
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\toonhud.zip'),  'https://github.com/TheCrafters001/TF2-Mod-Installer/releases/download/1.9/toonhud.zip', 'TF2 Mods', 'get', 0, 0)
 Source: "{tmp}\budhud.zip"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
