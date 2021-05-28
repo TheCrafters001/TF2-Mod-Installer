@@ -3,7 +3,7 @@ title TF2 Classic Installer
 SET inspath=%1
 SET tfclassicpath=%2
 cls
-set TF2CLASSICVER=2.0.1
+set TF2CLASSICVER=2.0.2
 echo Installing TF2 Classic (Version: %TF2CLASSICVER%)
 echo This window is installing TF2 Classic to the proper folder.
 echo PLEASE DO NOT CLOSE THIS WINDOW, IT WILL STOP THE INSTALL PROGRESS.

@@ -96,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="scripts\misc\my_Custom_Stuff_Gen.vb" />
+    <Compile Include="scripts\misc\TF2C.vb" />
     <Compile Include="scripts\mod\ModMenus\Huds.vb" />
     <Compile Include="scripts\mod\ModMenus\Misc.vb" />
     <Compile Include="scripts\mod\modUninstaller.vb" />

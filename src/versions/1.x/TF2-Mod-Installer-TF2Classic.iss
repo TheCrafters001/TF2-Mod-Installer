@@ -1,5 +1,5 @@
 #define MyAppName "TF2 Classic Installer"
-#define MyAppVersion "2.0.1"
+#define MyAppVersion "2.0.2"
 #define MyAppPublisher "TheCrafters001"
 #define MyAppURL "http://thecrafters001.github.io/"
 #define SourceModFolder "{autopf}\Steam\steamapps\sourcemods"
@@ -24,23 +24,31 @@ SolidCompression=yes
 WizardStyle=modern
 WizardImageFile=.\assets\TF2C_InstallWizard.bmp
 WizardSmallImageFile=.\assets\ModInstallerWizardSmall.bmp
-
+AllowCancelDuringInstall=no
+                                                                                  ; https://drive.google.com/uc?export=download&id=1lrDTkx6Qjq0KafAOrvTsZ4fUQjvuuC6D
 [Files]
 ;7-Zip
 Source: "Utilities\7Zip\7za.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7za.exe"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 Source: "Utilities\7Zip\7zxa.dll"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
-Source: "Utilities\scripts\tf2Classic_Install.bat"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
+; Source: "Utilities\scripts\tf2Classic_Install.bat"; DestDir: "{tmp}"; Flags: ignoreversion deleteafterinstall
 ;TF2-Classic
-Source: "{tmp}\tf2classic.7z"; \
+Source: "{tmp}\tf2classic.exe"; \
     DestDir: "{tmp}"; \
     Flags: external deleteafterinstall; \
     Components: full; \
-    Check: DwinsHs_Check(ExpandConstant('{tmp}\tf2classic.7z'),  'https://khromier.com/tf2c/tf2classic-2.0.1.7z', 'TF2 Mods', 'get', 0, 0)
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\tf2classic.exe'),  'https://files.moevsmachine.tf/tf2classic_full_2-0-2.exe', 'TF2 Mods', 'get', 0, 0)
+
+; Patched VIP_badwater map
+Source: "{tmp}\vip_badwater.bsp"; \
+    DestDir: "{tmp}"; \
+    Flags: external deleteafterinstall; \
+    Components: full; \
+    Check: DwinsHs_Check(ExpandConstant('{tmp}\vip_badwater.bsp'),  'https://drive.google.com/uc?export=download&id=1lrDTkx6Qjq0KafAOrvTsZ4fUQjvuuC6D', 'TF2 Mods', 'get', 0, 0)
 
 [Run]
-; Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\tf2classic.7z"" -o""{#SourceModFolder}\"" * -r -aoa"; Flags: runhidden; Description: "Team Fortress 2 Classic"; StatusMsg: "Installing Team Fortress 2 Classic"
-Filename: "{tmp}\tf2Classic_Install.bat"; Parameters: """{#SourceModFolder}"" ""{tmp}\tf2classic.7z"""; StatusMsg: "Running install script..."
+Filename: "{tmp}\7za.exe"; Parameters: "x ""{tmp}\tf2classic.exe"" -o""{#SourceModFolder}\"" * -r -aoa -y"; Flags: runhidden; Description: "Team Fortress 2 Classic"; StatusMsg: "Installing Team Fortress 2 Classic... This may take a while..."
+Filename: "cmd"; Parameters: "/c copy /y ""{tmp}\vip_badwater.bsp"" ""{#SourceModFolder}\tf2classic\maps\"""; Description: "Patches vip_badwater"; StatusMsg: "Patching vip_badwater...";
 
 [Components]
 Name: "full"; Description: "Team Fortress 2 Classic"; ExtraDiskSpaceRequired: 3700000000; Types: main; Flags: fixed
